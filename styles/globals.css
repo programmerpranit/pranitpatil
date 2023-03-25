@@ -17,9 +17,13 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   /* font-family: 'Roboto', sans-serif; */
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   line-height: 1.8;
   color: #212121;
+}
+
+:root {
+  --primary: ,
 }
 
 h1 {
@@ -43,9 +47,10 @@ h4 {
 }
 
 p {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.75;
   letter-spacing: 1px;
+  font-weight: 500;
 }
 
 button {
@@ -55,6 +60,76 @@ button {
   line-height: 50px;
   color: white;
   letter-spacing: 0.1em;
+}
+
+blockquote {
+  padding-left: 1rem;
+  border-left: 1px solid #0070f3;
+  font-style: italic;
+}
+
+.ProseMirror blockquote {
+  padding-left: 1rem;
+  border-left: 2px solid #0070f3;
+  font-style: italic;
+}
+.max-lines-2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.max-lines-3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines to show */
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.ProseMirror {
+  outline: none;
+  padding: 10px;
+}
+
+
+.ProseMirror > pre {
+  background: #0D0D0D;
+  color: #FFF;
+  font-family: 'JetBrainsMono', monospace;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.ProseMirror > pre > code {
+  background: #0D0D0D;
+  color: #FFF;
+  font-family: 'JetBrainsMono', monospace;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  color: inherit;
+  padding: 0;
+  background: none;
+  font-size: 1rem;
+}
+
+.menu-btn {
+  color: black;
+  /* background: #000; */
+  padding: 2px 8px;
+  line-height: normal;
+  border: solid 1px gray;
+  border-radius: 5px;
+  margin: 1px;
+}
+
+.menu-btn:hover {
+  background-color: gray;
+  color: white;
 }
 
 @media screen and (max-width: 480px) {
@@ -81,5 +156,4 @@ button {
     line-height: 1.75;
     letter-spacing: 1px;
   }
-
 }
