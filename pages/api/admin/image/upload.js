@@ -44,7 +44,7 @@ const handler = async (req, res) => {
       public_id: timestamp + "-" + name,
     });
     const url = response.secure_url;
-
+    await dbConnect();
     await Image.create({ title: data.fields.title, url, alt: data.fields.title });
 
     return res.status(200).json({ message: "Image Uploaded Successfully", url });
