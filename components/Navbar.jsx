@@ -1,6 +1,18 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
-const Navbar = ({ pathname }) => {
+const Navbar = () => {
+  const [pathname, setPathname] = useState("/");
+
+  const path = useRouter().asPath;
+
+  useEffect(() => {
+    setPathname(path);
+  }, [path]);
+
+  if (path.startsWith("/admin")) return;
+
   return (
     <>
       <nav className="flex max-md:flex-col max-w-6xl m-auto justify-between p-10 ">
@@ -13,7 +25,7 @@ const Navbar = ({ pathname }) => {
           <Link href="/">
             <p
               className={`font-medium  text-lg ${
-                pathname == "" ? "text-primary" : "text-secondary"
+                pathname == "/" ? "text-primary" : "text-secondary"
               } hover:text-primary`}
             >
               Work
@@ -22,25 +34,27 @@ const Navbar = ({ pathname }) => {
           <Link href="/talk">
             <p
               className={`font-medium  text-lg ${
-                pathname == "talk" ? "text-primary" : "text-secondary"
+                pathname == "/talk" ? "text-primary" : "text-secondary"
               } hover:text-primary`}
             >
               Talk
             </p>
           </Link>
-          {/* <Link href="/about">
+          <Link href="/blogs">
             <p
               className={`font-medium  text-lg ${
-                pathname == "about" ? "text-primary" : "text-secondary"
+                pathname.startsWith("/blogs")
+                  ? "text-primary"
+                  : "text-secondary"
               } hover:text-primary`}
             >
               Blog
             </p>
-          </Link> */}
+          </Link>
           <Link href="/about">
             <p
               className={`font-medium  text-lg ${
-                pathname == "about" ? "text-primary" : "text-secondary"
+                pathname == "/about" ? "text-primary" : "text-secondary"
               } hover:text-primary`}
             >
               About

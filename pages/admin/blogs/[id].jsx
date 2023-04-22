@@ -5,7 +5,6 @@ import dbConnect from "@/middleware/mongo";
 import Blog from "@/models/Blog";
 import React, { useState } from "react";
 
-
 const BlogEditor = ({ blogObj }) => {
   const [blog, setBlog] = useState(blogObj);
   const [content, setcontent] = useState("<p>Start Typing Here</p>")
@@ -56,6 +55,9 @@ const BlogEditor = ({ blogObj }) => {
 export default BlogEditor;
 
 export async function getServerSideProps(context) {
+
+  console.log(context);
+
   const id = context.query.id;
 
   if(id == 'add') {

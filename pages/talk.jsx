@@ -1,10 +1,12 @@
-import Navbar from '@/components/Navbar';
+import TalkCard from '@/components/TalkCard';
 
 const Talk = () => {
   return (
     <>
-    <Navbar pathname={'talk'}/>
-    <div>Talk</div>
+
+    <h2 className='text-center my-5' >Talks</h2>
+
+    <TalkCard/>
     </>
   )
 }

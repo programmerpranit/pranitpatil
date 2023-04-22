@@ -27,6 +27,7 @@ const Login = () => {
       };
       const res = await axios.post(url, data);
 
+      console.log(res);
       if (res.status == 200) {
         localStorage.setItem("token", res.data.token);
         cookies.set("authorization", res.data.token, {path:"/"});

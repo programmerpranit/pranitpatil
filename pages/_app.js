@@ -3,6 +3,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Head from "next/head";
 import axios from "axios";
+import Navbar from "@/components/Navbar";
 
 export default function App({ Component, pageProps }) {
   axios.interceptors.request.use(
@@ -29,6 +30,7 @@ export default function App({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Navbar/>
       <ToastContainer pauseOnFocusLoss draggable pauseOnHover />
       <ToastContainer />
       <Component {...pageProps} />

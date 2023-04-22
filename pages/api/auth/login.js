@@ -36,6 +36,8 @@ const handler = async (req, res) => {
         return res
           .status(200)
           .json({ message: "Successfully Logged In", token });
+      } else {
+        return res.status(400).json({ message: "Failed to login" });
       }
     } catch (error) {
       console.log(error);
