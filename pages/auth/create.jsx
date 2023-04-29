@@ -23,9 +23,7 @@ const SignUp = () => {
       };
       const res = await axios.post(url, data);
 
-      if (res.status == 200) {
-        toast.success(res.data.message);
-      }
+      toast.success(res.data.message);
     } catch (error) {
       if (error?.response?.data?.message) {
         toast.error(error.response.data.message);

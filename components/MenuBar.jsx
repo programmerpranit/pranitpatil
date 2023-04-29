@@ -1,14 +1,33 @@
 import React, { useCallback } from "react";
 
 const MenuBar = ({ editor }) => {
-    
-    const addImage = useCallback(() => {
-      const url = window.prompt('URL')
-  
-      if (url) {
-        editor.chain().focus().setImage({ src: url }).run()
-      }
-    }, [editor])
+  const addImage = useCallback(() => {
+    const url = window.prompt("URL");
+
+    if (url) {
+      editor.chain().focus().setImage({ src: url }).run();
+    }
+  }, [editor]);
+
+  const setLink = useCallback(() => {
+    const previousUrl = editor.getAttributes("link").href;
+    const url = window.prompt("URL", previousUrl);
+
+    // cancelled
+    if (url === null) {
+      return;
+    }
+
+    // empty
+    if (url === "") {
+      editor.chain().focus().extendMarkRange("link").unsetLink().run();
+
+      return;
+    }
+
+    // update link
+    editor.chain().focus().extendMarkRange("link").setLink({ href: url, target: "_blank" }).run();
+  }, [editor]);
 
   if (!editor) {
     return null;
@@ -57,9 +76,7 @@ const MenuBar = ({ editor }) => {
           h5
         </button>
         <button
-          onClick={() =>
-            editor.chain().focus().setParagraph().run()
-          }
+          onClick={() => editor.chain().focus().setParagraph().run()}
           className={`${
             editor.isActive("paragraph") ? "bg-slate-300" : ""
           } menu-btn`}
@@ -111,8 +128,20 @@ const MenuBar = ({ editor }) => {
           Blockquote
         </button>
 
-        <button className="menu-btn" onClick={addImage}>setImage</button>
-        
+        <button className="menu-btn" onClick={addImage}>
+          setImage
+        </button>
+
+        <button onClick={setLink} className={`menu-btn ${editor.isActive('link') ? 'bg-slate-300' : ''}`}>
+        setLink
+      </button>
+      <button
+      className="menu-btn"
+        onClick={() => editor.chain().focus().unsetLink().run()}
+        disabled={!editor.isActive('link')}
+      >
+        unsetLink
+      </button>
       </div>
     </>
   );

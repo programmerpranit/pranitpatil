@@ -1,26 +1,38 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import slugify from "slugify";
 
-const BlogSideBar = ({ blog, setBlog }) => {
+const BlogSideBar = ({ blog, setBlog, saveBlog, toggleDraft }) => {
   const generateSlug = () => {
     if (!blog) return;
-    const slug = slugify(blog.title, {
-        lower: true, 
+    const slug = slugify(blog?.title, {
+      lower: true,
     });
     setBlog({ ...blog, slug: slug });
   };
 
   const [url, setUrl] = useState("");
 
+  useEffect(() => {
+    if (url.endsWith(".png") || url.endsWith(".jpg") || url.endsWith(".jpeg")) {
+      console.log("Perfect")
+      setBlog({ ...blog, image: url });
+    }
+  }, [url]);
+
   return (
     <>
       <div className="pr-10 mt-20">
         <div className="flex justify-between">
-          <button className="text-black border border-primary rounded ">
-            Published
+          <button
+            onClick={toggleDraft}
+            className="text-black border border-primary rounded "
+          >
+            {blog?.published ? "Published" : "Draft"}
           </button>
-          <button className="bg-primary">Save</button>
+          <button onClick={saveBlog} className="bg-primary">
+            Save
+          </button>
         </div>
         <div className="slug my-5 ">
           <p>Slug</p>
@@ -58,7 +70,12 @@ const BlogSideBar = ({ blog, setBlog }) => {
             placeholder="url"
             className="border p-1 px-2 my-2 w-full outline-none"
           />
-          <Image src={blog?.image ? blog.image : ""} width={500} height={300} />
+          <Image
+            src={blog?.image ? blog.image : ""}
+            width={500}
+            height={300}
+            alt=""
+          />
         </div>
       </div>
     </>

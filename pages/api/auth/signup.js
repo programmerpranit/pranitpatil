@@ -31,6 +31,9 @@ const handler = async (req, res) => {
         .json({ message: "User Created Successfully, Please verify." });
     } catch (error) {
       console.log(error);
+      if (error.code == 11000) {
+        return res.status(400).json({ message: "Email id is already in use" });
+      }
       return res.status(500).json({ message: "Unkown Error Occured" });
     }
   } else {

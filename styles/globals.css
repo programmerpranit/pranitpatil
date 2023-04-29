@@ -23,7 +23,11 @@ body {
 }
 
 :root {
-  --primary: ,
+  --primary: #0070f3,
+}
+
+a {
+  color: var(--primary);
 }
 
 h1 {
@@ -130,6 +134,16 @@ blockquote {
 .menu-btn:hover {
   background-color: gray;
   color: white;
+}
+
+.ProseMirror > img {
+  max-height: 400px !important;
+  object-fit: contain;
+  margin-inline: auto;
+}
+
+.ProseMirror a {
+  color: var(--primary) !important;
 }
 
 @media screen and (max-width: 480px) {

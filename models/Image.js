@@ -9,6 +9,8 @@ const ImageSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+ImageSchema.index({ title: 'text' })
+
 mongoose.models = {};
 
 export default mongoose.model("Image", ImageSchema);

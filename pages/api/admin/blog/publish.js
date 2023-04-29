@@ -7,32 +7,20 @@ const handler = async (req, res) => {
   if (!admin) return res.status(401).json({ message: "Unauthorized!" });
 
   if (req.method == "PUT") {
-    const { id } = req.query;
-
-    const {
-      category,
-      title = "",
-      slug = "",
-      image = "",
-      desc = "",
-      content = "",
-    } = req.body;
-
     try {
+      const { published, id } = req.body;
+
       await dbConnect();
 
       const blog = await Blog.findByIdAndUpdate(id, {
-        title,
-        image,
-        content,
-        desc,
-        slug,
-        category
+        published: published,
       }, {new: true});
 
-      return res
-        .status(200)
-        .json({ message: "Blog Updated Successfully", blog });
+      return res.status(201).json({
+        message: `Blog ${
+          published ? "Published Sucessfully" : "Saved In Draft"
+        }`, blog
+      });
     } catch (error) {
       return res.status(500).json({ message: "Unknown Error occured" });
     }
@@ -40,5 +28,4 @@ const handler = async (req, res) => {
     return res.status(405).json({ message: "This method is not allowed" });
   }
 };
-
 export default handler;
