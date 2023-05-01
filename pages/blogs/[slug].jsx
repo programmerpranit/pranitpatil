@@ -1,13 +1,25 @@
 import Blog404 from "@/components/Blog404";
 import dbConnect from "@/middleware/mongo";
 import Blog from "@/models/Blog";
+import moment from "moment/moment";
 import Image from "next/image";
 import React from "react";
 
-const BlogPage = ({blog}) => {
+const BlogPage = ({ blog }) => {
+  const getDate = (str) => {
+    return moment(str).format("DD MMM YYYY");
+  };
 
+  const getTime = (str = "") => {
+    let words = str.split(" ");
+    if (words.length / 200 < 1) {
+      return 1;
+    } else {
+      return words.length / 200;
+    }
+  };
 
-  if(!blog) return <Blog404/>;
+  if (!blog) return <Blog404 />;
 
   return (
     <>
@@ -15,61 +27,33 @@ const BlogPage = ({blog}) => {
         <div className="w-2/12"></div>
         <div className="w-8/12  ">
           <article>
-            <p className="text-secondary uppercase font-semibold">Category</p>
+            <p className="text-secondary uppercase font-semibold">
+              {blog.category}
+            </p>
 
-            <h1 className="text-5xl leading-tight mt-5">
-              Blog Title Lorem ipsum dolor sit amet, consectetur adipisicing.
-            </h1>
+            <h1 className="text-5xl leading-tight mt-5">{blog.title}</h1>
 
             <div className="flex gap-5 my-5 cursor-pointer">
-              <p className="text-secondary hover:text-primary">May 1 2023</p>
-              <p className="text-secondary hover:text-primary">5 Min Read</p>
+              <p className="text-secondary hover:text-primary">
+                {getDate(blog.createdAt)}
+              </p>
+              <p className="text-secondary hover:text-primary">
+                {getTime(blog.content)} Min Read
+              </p>
             </div>
 
             <Image
-              src={"/talks/webdev101.jpg"}
+              src={blog.image}
               width={800}
               height={400}
-              alt="blog image"
-              className="object-cover max-h-96"
+              alt={blog.title}
+              className=""
             />
 
-            <div className="content my-5">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Aspernatur iure suscipit perferendis dignissimos, asperiores
-                atque ratione officia repudiandae, culpa vero neque adipisci?
-                Nulla voluptatem vitae id odio fugiat quam? Recusandae?
-              </p>
-              <br />
-              <h2>Heading 2</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Aspernatur iure suscipit perferendis dignissimos, asperiores
-                atque ratione officia repudiandae, culpa vero neque adipisci?
-                Nulla voluptatem vitae id odio fugiat quam? Recusandae?
-              </p>
-              <br />
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Aspernatur iure suscipit perferendis dignissimos, asperiores
-                atque ratione officia repudiandae, culpa vero neque adipisci?
-                Nulla voluptatem vitae id odio fugiat quam? Recusandae?
-              </p>
-              <br />{" "}
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Aspernatur iure suscipit perferendis dignissimos, asperiores
-                atque ratione officia repudiandae, culpa vero neque adipisci?
-                Nulla voluptatem vitae id odio fugiat quam? Recusandae?
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Aspernatur iure suscipit perferendis dignissimos, asperiores
-                atque ratione officia repudiandae, culpa vero neque adipisci?
-                Nulla voluptatem vitae id odio fugiat quam? Recusandae?
-              </p>
-            </div>
+            <div
+              dangerouslySetInnerHTML={{ __html: blog.content }}
+              className="content ProseMirror my-5"
+            ></div>
           </article>
         </div>
         <div className="w-2/12"></div>
@@ -84,17 +68,17 @@ export async function getServerSideProps(context) {
   const slug = context.query.slug;
   try {
     await dbConnect();
-    const blogData = await Blog.findOne({ slug: slug });
+    const blogData = await Blog.findOne({ slug: slug, published: true });
 
     const blog = JSON.parse(JSON.stringify(blogData));
 
     return {
-      props: { blog }, 
+      props: { blog },
     };
   } catch (error) {
     console.log(error);
     return {
-      props: { blog: null }, 
+      props: { blog: null },
     };
   }
 }

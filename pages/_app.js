@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Head from "next/head";
 import axios from "axios";
 import Navbar from "@/components/Navbar";
+import Script from "next/script";
 
 export default function App({ Component, pageProps }) {
   axios.interceptors.request.use(
@@ -30,9 +31,20 @@ export default function App({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar/>
+      <Navbar />
       <ToastContainer pauseOnFocusLoss draggable pauseOnHover />
-      <ToastContainer />
+
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-326KGTZH86"
+        strategy="afterInteractive"
+      />
+
+      <Script id="google-tag" strategy="afterInteractive">
+        {`  window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-326KGTZH86');`}
+      </Script>
       <Component {...pageProps} />
     </>
   );
