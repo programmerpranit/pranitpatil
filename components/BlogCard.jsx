@@ -15,17 +15,17 @@ const BlogCard = ({ blog }) => {
         />
         <div className="p-4">
           <p className="font-semibold text-gray-700 uppercase">
-            {blog.category}
+            {blog?.category}
           </p>
           <h3 className="max-lines-3 my-2 leading-normal hover:text-primary">
-            {blog.title}
+            {blog?.title}
           </h3>
           {/* <p className="max-lines-3">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam fuga
             vel asperiores enim debitis
           </p> */}
           <div className="flex justify-between">
-            <Link href={`/blogs/${blog.slug}`}>
+            <Link href={`/blogs/${blog?.slug}`}>
               <p className="text-primary font-semibold mt-2">Read More</p>
             </Link>
             <p className=" mt-2">3 min read</p>

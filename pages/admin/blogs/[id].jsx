@@ -106,7 +106,7 @@ const BlogEditor = ({ blogObj }) => {
         <div className=" max-w-3xl md:w-1/2 p-5">
           <input
             type="text"
-            value={blog?.category ? blog.category : ""}
+            value={blog?.category ? blog?.category : ""}
             onChange={(e) => {
               setBlog({ ...blog, category: e.target.value });
             }}
@@ -116,7 +116,7 @@ const BlogEditor = ({ blogObj }) => {
 
           <textarea
             name="title"
-            value={blog?.title ? blog.title : ""}
+            value={blog?.title ? blog?.title : ""}
             onKeyUp={handleTextarea}
             onChange={(e) => {
               setBlog({ ...blog, title: e.target.value });
