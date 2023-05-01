@@ -8,7 +8,7 @@ const BlogCard = ({ blog }) => {
       <div className="md:m-5 my-5 border border-gray-300 shadow-md rounded">
         <Image
           className="rounded-t h-48 object-cover"
-          src={blog.image}
+          src={blog?.image}
           width={500}
           height={400}
           alt={"blog img"}
