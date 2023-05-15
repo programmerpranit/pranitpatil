@@ -26,6 +26,7 @@ const handler = async (req, res) => {
     console.log(req.body);
 
     const data = await readFile(req);
+    console.log(data);
     const filepath = data.files.media.filepath;
 
     const name = slugify(data.fields.title, {
@@ -43,6 +44,7 @@ const handler = async (req, res) => {
     const response = await cloudinary.uploader.upload(filepath, {
       public_id: timestamp + "-" + name,
     });
+    console.log(response);
     const url = response.secure_url;
     console.log(url);
     await dbConnect();
