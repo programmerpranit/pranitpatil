@@ -1,3 +1,4 @@
+import WorkSection from "@/components/WorkSection";
 
 export default function Home() {
   return (
@@ -7,18 +8,7 @@ export default function Home() {
         <span className="text-primary"> Fullstack Developer </span> from Mumbai
       </h2>
 
-
-      <div className="work hidden">
-
-      Blu Resort 
-      Lucky Numbers
-      Doublestar 
-      Aidni Website 
-      Api Day Mumbai 
-
-      </div>
-
-
+      <WorkSection />
     </>
   );
 }
