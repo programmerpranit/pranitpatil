@@ -18,13 +18,19 @@ export default function TalkCard() {
           <h2 className="leading-normal mb-4">Web Development 101</h2>
           <div className="flex flex-col md:flex-row md:gap-5 pb-4">
             <p className="hover:text-primary cursor-pointer ">12-10-2022 </p>
-            <p className="hover:text-primary cursor-pointer ">A. C. Patil College of Engineering</p>
+            <p className="hover:text-primary cursor-pointer ">
+              A. C. Patil College of Engineering
+            </p>
           </div>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
-            consequuntur ea aliquid laboriosam consequatur, quidem iste eos.
-            Enim officia in recusandae, nesciunt accusamus quasi ipsam
-            aspernatur voluptate consequatur ex impedit?
+            I organized and presented an engaging web development workshop at
+            ACPCE, where participants explored the art of building functional
+            websites. We covered important topics like HTML, CSS and JavaScript
+            equipping attendees with valuable skills to excel in this field.
+            Through interactive exercises, live demonstrations, and engaging
+            discussions, the workshop created a collaborative learning
+            environment that sparked creativity and empowered participants to
+            unleash their full potential in web development.
           </p>
         </div>
       </div>

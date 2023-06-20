@@ -6,6 +6,7 @@ import axios from "axios";
 import Navbar from "@/components/Navbar";
 import NextNProgress from "nextjs-progressbar";
 import Script from "next/script";
+import Footer from "@/components/Footer";
 
 export default function App({ Component, pageProps }) {
   axios.interceptors.request.use(
@@ -48,6 +49,7 @@ export default function App({ Component, pageProps }) {
             gtag('config', 'G-326KGTZH86');`}
       </Script>
       <Component {...pageProps} />
+      <Footer />
     </>
   );
 }

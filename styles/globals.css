@@ -23,7 +23,7 @@ body {
 }
 
 :root {
-  --primary: #0070f3,
+  --primary: #0070f3;
 }
 
 a {
@@ -54,7 +54,7 @@ p {
   font-size: 16px;
   line-height: 1.75;
   letter-spacing: 1px;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 button {
@@ -100,19 +100,18 @@ blockquote {
   padding: 10px;
 }
 
-
 .ProseMirror > pre {
-  background: #0D0D0D;
-  color: #FFF;
-  font-family: 'JetBrainsMono', monospace;
+  background: #0d0d0d;
+  color: #fff;
+  font-family: "JetBrainsMono", monospace;
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
 }
 
 .ProseMirror > pre > code {
-  background: #0D0D0D;
-  color: #FFF;
-  font-family: 'JetBrainsMono', monospace;
+  background: #0d0d0d;
+  color: #fff;
+  font-family: "JetBrainsMono", monospace;
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
   color: inherit;
