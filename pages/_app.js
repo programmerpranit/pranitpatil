@@ -28,7 +28,12 @@ export default function App({ Component, pageProps }) {
         <title>Pranit Patil - Full Stack Developer</title>
         <meta
           name="description"
-          content="Pranit Patil - Full Stack Developer"
+          content="I'm a passionate Full stack developer based in Mumbai, with
+          expertise in both freelance projects and full-time roles. With a
+          strong command of modern technologies and frameworks, including React,
+          JavaScript, Next.js, and TypeScript, I have mastered the art of
+          creating robust and dynamic web applications. I take pride in
+          delivering high-quality code and crafting intuitive user experiences."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
