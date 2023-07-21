@@ -18,7 +18,7 @@ const Navbar = () => {
       <nav className="flex max-md:flex-col max-w-6xl m-auto justify-between p-10 ">
         <div className="max-md:text-center max-md:my-5">
           <Link href="/">
-            <h2 className="text-[28px] font-medium">Pranit Patil</h2>
+            <h2 className="text-[28px] text-black font-medium">Pranit Patil</h2>
           </Link>
         </div>
         <div className="flex gap-8 justify-center items-center">
