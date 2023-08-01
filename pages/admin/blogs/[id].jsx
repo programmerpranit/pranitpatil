@@ -12,7 +12,9 @@ import { toast } from "react-toastify";
 
 const BlogEditor = ({ blogObj }) => {
   const [blog, setBlog] = useState(blogObj);
-  const [content, setcontent] = useState("<p>Start Typing Here</p>");
+  const [content, setcontent] = useState(
+    blogObj?.content ? blogObj?.content : "<p>Start Typing Here</p>"
+  );
 
   const router = useRouter();
 
@@ -54,7 +56,7 @@ const BlogEditor = ({ blogObj }) => {
       const data = {
         category: blog.category,
         title: blog.title,
-        slug: blog.slug,
+        slug: blog.slug.trim(),
         image: blog.image,
         desc: blog.desc,
         content: content,
@@ -76,7 +78,7 @@ const BlogEditor = ({ blogObj }) => {
       const data = {
         category: blog.category,
         title: blog.title,
-        slug: blog.slug,
+        slug: blog.slug.trim(),
         image: blog.image,
         desc: blog.desc,
         content: content,
@@ -156,6 +158,7 @@ export async function getServerSideProps(context) {
   try {
     await dbConnect();
     const data = await Blog.findById(id);
+    console.log(data);
     blogObj = JSON.parse(JSON.stringify(data));
   } catch (error) {
     blogObj = null;

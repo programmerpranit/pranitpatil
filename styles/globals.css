@@ -145,6 +145,10 @@ blockquote {
   color: var(--primary) !important;
 }
 
+.ProseMirror p {
+  padding-bottom: 8px;
+}
+
 @media screen and (max-width: 480px) {
   h1 {
     font-size: 48px;

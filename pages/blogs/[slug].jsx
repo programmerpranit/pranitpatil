@@ -26,7 +26,7 @@ const BlogPage = ({ blog }) => {
       <div className="flex max-w-6xl m-auto">
         <div className="w-2/12"></div>
         <div className="w-8/12  ">
-          <article>
+          <article className="ProseMirror">
             <p className="text-secondary uppercase font-semibold">
               {blog.category}
             </p>
@@ -42,13 +42,15 @@ const BlogPage = ({ blog }) => {
               </p>
             </div>
 
-            <Image
-              src={blog.image}
-              width={800}
-              height={400}
-              alt={blog.title}
-              className=""
-            />
+            {blog.image && (
+              <Image
+                src={blog.image}
+                width={800}
+                height={400}
+                alt={blog.title}
+                className=""
+              />
+            )}
 
             <div
               dangerouslySetInnerHTML={{ __html: blog.content }}
@@ -69,7 +71,6 @@ export async function getServerSideProps(context) {
   try {
     await dbConnect();
     const blogData = await Blog.findOne({ slug: slug, published: true });
-
     const blog = JSON.parse(JSON.stringify(blogData));
 
     return {
