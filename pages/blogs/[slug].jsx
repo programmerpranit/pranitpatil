@@ -25,7 +25,7 @@ const BlogPage = ({ blog }) => {
     <>
       <div className="flex max-w-6xl m-auto">
         <div className="w-2/12"></div>
-        <div className="w-8/12  ">
+        <div className="md:w-8/12  ">
           <article className="ProseMirror">
             <p className="text-secondary uppercase font-semibold">
               {blog.category}
@@ -54,7 +54,7 @@ const BlogPage = ({ blog }) => {
 
             <div
               dangerouslySetInnerHTML={{ __html: blog.content }}
-              className="content ProseMirror my-5"
+              className="content my-5"
             ></div>
           </article>
         </div>
