@@ -30,7 +30,7 @@ export default AllBlogs;
 export async function getServerSideProps(context) {
   try {
     await dbConnect();
-    const data = await Blog.find({ published: true });
+    const data = await Blog.find({ published: true }).select({ content: 0 });
     console.log(data);
     const blogs = JSON.parse(JSON.stringify(data));
     return {
