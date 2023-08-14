@@ -17,7 +17,7 @@ const BlogCard = ({ blog }) => {
           <p className="font-semibold text-gray-700 uppercase">
             {blog?.category}
           </p>
-          <h3 className="max-lines-3 my-2 leading-normal hover:text-primary">
+          <h3 className="max-lines-3 my-2 leading-normal text-black hover:text-primary">
             {blog?.title}
           </h3>
           {/* <p className="max-lines-3">
@@ -28,7 +28,7 @@ const BlogCard = ({ blog }) => {
             <Link href={`/blogs/${blog?.slug}`}>
               <p className="text-primary font-semibold mt-2">Read More</p>
             </Link>
-            <p className=" mt-2">3 min read</p>
+            {/* <p className=" mt-2">3 min read</p> */}
           </div>
         </div>
       </div>
