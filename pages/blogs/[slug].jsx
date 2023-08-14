@@ -3,7 +3,15 @@ import dbConnect from "@/middleware/mongo";
 import Blog from "@/models/Blog";
 import moment from "moment/moment";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
+// import hljs from "highlight.js";
+
+// Using ES6 import syntax
+import hljs from "highlight.js/lib/core";
+import javascript from "highlight.js/lib/languages/javascript";
+
+// Then register the languages you need
+hljs.registerLanguage("javascript", javascript);
 
 const BlogPage = ({ blog }) => {
   const getDate = (str) => {
@@ -19,13 +27,17 @@ const BlogPage = ({ blog }) => {
     }
   };
 
+  useEffect(() => {
+    hljs.highlightAll();
+  }, []);
+
   if (!blog) return <Blog404 />;
 
   return (
     <>
       <div className="flex max-w-6xl m-auto">
-        <div className="w-2/12"></div>
-        <div className="md:w-8/12  ">
+        <div className="w-2/12 max-md:hidden"></div>
+        <div className="md:w-8/12 w-full">
           <article className="ProseMirror">
             <p className="text-secondary uppercase font-semibold">
               {blog.category}

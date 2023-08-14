@@ -1,4 +1,10 @@
 import React, { useCallback } from "react";
+// Using ES6 import syntax
+import hljs from "highlight.js/lib/core";
+import javascript from "highlight.js/lib/languages/javascript";
+
+// Then register the languages you need
+hljs.registerLanguage("javascript", javascript);
 
 const MenuBar = ({ editor }) => {
   const addImage = useCallback(() => {
@@ -26,7 +32,12 @@ const MenuBar = ({ editor }) => {
     }
 
     // update link
-    editor.chain().focus().extendMarkRange("link").setLink({ href: url, target: "_blank" }).run();
+    editor
+      .chain()
+      .focus()
+      .extendMarkRange("link")
+      .setLink({ href: url, target: "_blank" })
+      .run();
   }, [editor]);
 
   if (!editor) {
@@ -112,7 +123,13 @@ const MenuBar = ({ editor }) => {
           OL
         </button>
         <button
-          onClick={() => editor.chain().focus().toggleCodeBlock().run()}
+          onClick={() =>
+            editor
+              .chain()
+              .focus()
+              .toggleCodeBlock({ language: "javascript" })
+              .run()
+          }
           className={`${
             editor.isActive("codeBlock") ? "bg-slate-300" : ""
           } menu-btn `}
@@ -132,16 +149,21 @@ const MenuBar = ({ editor }) => {
           setImage
         </button>
 
-        <button onClick={setLink} className={`menu-btn ${editor.isActive('link') ? 'bg-slate-300' : ''}`}>
-        setLink
-      </button>
-      <button
-      className="menu-btn"
-        onClick={() => editor.chain().focus().unsetLink().run()}
-        disabled={!editor.isActive('link')}
-      >
-        unsetLink
-      </button>
+        <button
+          onClick={setLink}
+          className={`menu-btn ${
+            editor.isActive("link") ? "bg-slate-300" : ""
+          }`}
+        >
+          setLink
+        </button>
+        <button
+          className="menu-btn"
+          onClick={() => editor.chain().focus().unsetLink().run()}
+          disabled={!editor.isActive("link")}
+        >
+          unsetLink
+        </button>
       </div>
     </>
   );

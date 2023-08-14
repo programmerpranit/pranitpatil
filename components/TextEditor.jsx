@@ -3,6 +3,12 @@ import StarterKit from "@tiptap/starter-kit";
 import MenuBar from "./MenuBar";
 import Image from "@tiptap/extension-image";
 import Link from "@tiptap/extension-link";
+// Using ES6 import syntax
+import hljs from "highlight.js/lib/core";
+import javascript from "highlight.js/lib/languages/javascript";
+
+// Then register the languages you need
+hljs.registerLanguage("javascript", javascript);
 
 const TextEditor = ({ content, setContent }) => {
   Image.configure({
@@ -18,7 +24,7 @@ const TextEditor = ({ content, setContent }) => {
       Link.configure({
         rel: "dofollow",
         HTMLAttributes: {
-          class: ' bg-primary bg-opacity-10',
+          class: " bg-primary bg-opacity-10",
         },
       }),
     ],
