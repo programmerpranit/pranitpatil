@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 // Using ES6 import syntax
 import hljs from "highlight.js/lib/core";
 import javascript from "highlight.js/lib/languages/javascript";
@@ -45,7 +45,7 @@ const MenuBar = ({ editor }) => {
   }
   return (
     <>
-      <div className="flex flex-wrap m-2 ">
+      <div className="sticky top-0 flex flex-wrap m-2 ">
         <button
           onClick={() =>
             editor.chain().focus().toggleHeading({ level: 2 }).run()

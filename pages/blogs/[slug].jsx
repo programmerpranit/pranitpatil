@@ -4,11 +4,11 @@ import Blog from "@/models/Blog";
 import moment from "moment/moment";
 import Image from "next/image";
 import React, { useEffect } from "react";
-// import hljs from "highlight.js";
 
 // Using ES6 import syntax
 import hljs from "highlight.js/lib/core";
 import javascript from "highlight.js/lib/languages/javascript";
+import Head from "next/head";
 
 // Then register the languages you need
 hljs.registerLanguage("javascript", javascript);
@@ -20,12 +20,39 @@ const BlogPage = ({ blog }) => {
 
   const getTime = (str = "") => {
     let words = str.split(" ");
-    if (words.length / 200 < 1) {
+    if (words.length < 200) {
       return 1;
     } else {
-      return words.length / 200;
+      return Math.ceil(words.length / 200);
     }
   };
+
+  const schema = `{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pranitpatil.com/blogs/${blog.slug}"
+  },
+  "headline": "${blog.title}",
+  "description": "${blog.desc}",
+  "image": "${blog.image}",  
+  "author": {
+    "@type": "Person",
+    "name": "Pranit Patil",
+    "url": "https://pranitpatil.com"
+  },  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Pranit Patil",
+    "logo": {
+      "@type": "ImageObject",
+      "url": ""
+    }
+  },
+  "datePublished": "${blog.createdAt}",
+  "dateModified": "${blog.updatedAt}"
+}`;
 
   useEffect(() => {
     hljs.highlightAll();
@@ -35,6 +62,15 @@ const BlogPage = ({ blog }) => {
 
   return (
     <>
+      <Head>
+        <title key="title">{blog.title} | Pranit Patil</title>
+        {/* <meta property="og:title" content="My new title" key="title" /> */}
+        <meta key="desc" name="description" content={blog.desc} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: schema }}
+        />
+      </Head>
       <div className="flex max-w-6xl m-auto">
         <div className="w-2/12 max-md:hidden"></div>
         <div className="md:w-8/12 w-full">
@@ -61,6 +97,7 @@ const BlogPage = ({ blog }) => {
                 height={400}
                 alt={blog.title}
                 className=""
+                loading="lazy"
               />
             )}
 
@@ -84,7 +121,6 @@ export async function getServerSideProps(context) {
     await dbConnect();
     const blogData = await Blog.findOne({ slug: slug, published: true });
     const blog = JSON.parse(JSON.stringify(blogData));
-
     return {
       props: { blog },
     };

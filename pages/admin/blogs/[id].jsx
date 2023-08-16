@@ -7,8 +7,15 @@ import Blog from "@/models/Blog";
 import { BASE_URL } from "@/utils/config";
 import axios from "axios";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
+
+// Using ES6 import syntax
+import hljs from "highlight.js/lib/core";
+import javascript from "highlight.js/lib/languages/javascript";
+
+// Then register the languages you need
+hljs.registerLanguage("javascript", javascript);
 
 const BlogEditor = ({ blogObj }) => {
   const [blog, setBlog] = useState(blogObj);
@@ -99,13 +106,17 @@ const BlogEditor = ({ blogObj }) => {
     e.target.style.height = `${scrollHeight}px`;
   };
 
+  useEffect(() => {
+    hljs.highlightAll();
+  }, []);
+
   return (
     <>
       <div className="flex max-md:flex-col mt-5">
         <div className="md:w-1/4">
           <ImageSideBar />
         </div>
-        <div className=" max-w-3xl md:w-1/2 p-5">
+        <div className="h-fit relative max-w-3xl md:w-1/2 p-5">
           <input
             type="text"
             value={blog?.category ? blog?.category : ""}
@@ -158,7 +169,6 @@ export async function getServerSideProps(context) {
   try {
     await dbConnect();
     const data = await Blog.findById(id);
-    console.log(data);
     blogObj = JSON.parse(JSON.stringify(data));
   } catch (error) {
     blogObj = null;

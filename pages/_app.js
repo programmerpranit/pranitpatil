@@ -28,6 +28,7 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>Pranit Patil - Full Stack Developer</title>
         <meta
+          key="desc"
           name="description"
           content="I'm a passionate Full stack developer based in Mumbai, with
           expertise in both freelance projects and full-time roles. With a
