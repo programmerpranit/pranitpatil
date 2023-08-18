@@ -12,14 +12,19 @@ const handler = async (req, res) => {
 
       await dbConnect();
 
-      const blog = await Blog.findByIdAndUpdate(id, {
-        published: published,
-      }, {new: true});
-
+      const blog = await Blog.findByIdAndUpdate(
+        id,
+        {
+          published: published,
+        },
+        { new: true }
+      );
+      res.revalidate(`/blogs/${blog.slug}`);
       return res.status(201).json({
         message: `Blog ${
           published ? "Published Sucessfully" : "Saved In Draft"
-        }`, blog
+        }`,
+        blog,
       });
     } catch (error) {
       return res.status(500).json({ message: "Unknown Error occured" });

@@ -9,6 +9,7 @@ import React, { useEffect } from "react";
 import hljs from "highlight.js/lib/core";
 import javascript from "highlight.js/lib/languages/javascript";
 import Head from "next/head";
+import { getServerSideProps } from ".";
 
 // Then register the languages you need
 hljs.registerLanguage("javascript", javascript);
@@ -115,11 +116,27 @@ const BlogPage = ({ blog }) => {
 
 export default BlogPage;
 
-export async function getServerSideProps(context) {
-  const slug = context.query.slug;
+export const getStaticPaths = async () => {
+  await dbConnect();
+  const posts = await Blog.find({ published: true }).select({ content: 0 });
+
+  const paths = posts.map((post) => ({
+    params: { slug: post.slug },
+  }));
+  return {
+    paths,
+    fallback: false, // false or "blocking"
+  };
+};
+
+export async function getStaticProps({ params }) {
+  const slug = params.slug;
   try {
     await dbConnect();
-    const blogData = await Blog.findOne({ slug: slug, published: true });
+    const blogData = await Blog.findOne({
+      slug: slug,
+      published: true,
+    });
     const blog = JSON.parse(JSON.stringify(blogData));
     return {
       props: { blog },

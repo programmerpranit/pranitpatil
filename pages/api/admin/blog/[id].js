@@ -21,15 +21,19 @@ const handler = async (req, res) => {
     try {
       await dbConnect();
 
-      const blog = await Blog.findByIdAndUpdate(id, {
-        title,
-        image,
-        content,
-        desc,
-        slug,
-        category
-      }, {new: true});
-
+      const blog = await Blog.findByIdAndUpdate(
+        id,
+        {
+          title,
+          image,
+          content,
+          desc,
+          slug,
+          category,
+        },
+        { new: true }
+      );
+      res.revalidate(`/blogs/${blog.slug}`);
       return res
         .status(200)
         .json({ message: "Blog Updated Successfully", blog });
