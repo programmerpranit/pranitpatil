@@ -9,12 +9,14 @@ import React, { useEffect } from "react";
 import hljs from "highlight.js/lib/core";
 import javascript from "highlight.js/lib/languages/javascript";
 import Head from "next/head";
-import { getServerSideProps } from ".";
+import { useRouter } from "next/router";
 
 // Then register the languages you need
 hljs.registerLanguage("javascript", javascript);
 
 const BlogPage = ({ blog }) => {
+  // const router = useRouter();
+
   const getDate = (str) => {
     return moment(str).format("DD MMM YYYY");
   };
@@ -27,6 +29,21 @@ const BlogPage = ({ blog }) => {
       return Math.ceil(words.length / 200);
     }
   };
+
+  useEffect(() => {
+    hljs.highlightAll();
+  }, []);
+
+  // if (router.isFallback) {
+  //   return (
+  //     <>
+  //       {" "}
+  //       <p> Loading...</p>
+  //     </>
+  //   );
+  // }
+
+  if (!blog) return <Blog404 />;
 
   const schema = `{
   "@context": "https://schema.org",
@@ -54,12 +71,6 @@ const BlogPage = ({ blog }) => {
   "datePublished": "${blog.createdAt}",
   "dateModified": "${blog.updatedAt}"
 }`;
-
-  useEffect(() => {
-    hljs.highlightAll();
-  }, []);
-
-  if (!blog) return <Blog404 />;
 
   return (
     <>
@@ -123,14 +134,16 @@ export const getStaticPaths = async () => {
   const paths = posts.map((post) => ({
     params: { slug: post.slug },
   }));
+  // console.log(paths);
   return {
     paths,
-    fallback: true, // false or "blocking"
+    fallback: "blocking", // false or "blocking"
   };
 };
 
-export async function getStaticProps({ params }) {
-  const slug = params.slug;
+export async function getStaticProps(context) {
+  // console.log(context.params);
+  const slug = context.params.slug;
   try {
     await dbConnect();
     const blogData = await Blog.findOne({

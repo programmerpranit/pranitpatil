@@ -29,7 +29,6 @@ const handler = async (req, res) => {
         category,
         published,
       });
-      res.revalidate(`/blogs/${blog.slug}`);
       return res
         .status(200)
         .json({ message: "Blog Created Successfully", blog });
