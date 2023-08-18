@@ -33,7 +33,9 @@ const handler = async (req, res) => {
         },
         { new: true }
       );
-      res.revalidate(`/blogs/${blog.slug}`);
+      if (blog.published) {
+        res.revalidate(`/blogs/${blog.slug}`);
+      }
       return res
         .status(200)
         .json({ message: "Blog Updated Successfully", blog });

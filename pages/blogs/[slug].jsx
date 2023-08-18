@@ -148,8 +148,12 @@ export async function getStaticProps(context) {
     await dbConnect();
     const blogData = await Blog.findOne({
       slug: slug,
-      published: true,
     });
+    if (!blogData.published) {
+      return {
+        props: { blog: null },
+      };
+    }
     const blog = JSON.parse(JSON.stringify(blogData));
     return {
       props: { blog },
