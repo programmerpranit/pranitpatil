@@ -18,6 +18,7 @@ import javascript from "highlight.js/lib/languages/javascript";
 hljs.registerLanguage("javascript", javascript);
 
 const BlogEditor = ({ blogObj }) => {
+  const [saving, setSaving] = useState(false);
   const [blog, setBlog] = useState(blogObj);
   const [content, setcontent] = useState(
     blogObj?.content ? blogObj?.content : "<p>Start Typing Here</p>"
@@ -25,9 +26,9 @@ const BlogEditor = ({ blogObj }) => {
 
   const router = useRouter();
 
-  const saveBlog = () => {
+  function saveBlog() {
     // setBlog({...blog, content: content})
-    // console.log(blog);
+    console.log("saving");
     if (blog?._id) {
       updateBlog();
       console.log("PUT");
@@ -37,7 +38,7 @@ const BlogEditor = ({ blogObj }) => {
       console.log("POST");
       createBlog();
     }
-  };
+  }
 
   const toggleDraft = async () => {
     try {
@@ -57,6 +58,7 @@ const BlogEditor = ({ blogObj }) => {
   };
 
   const createBlog = async () => {
+    setSaving(true);
     try {
       const url = `${BASE_URL}/api/admin/blog`;
 
@@ -76,9 +78,11 @@ const BlogEditor = ({ blogObj }) => {
     } catch (error) {
       handleApiError();
     }
+    setSaving(false);
   };
 
   const updateBlog = async () => {
+    setSaving(true);
     try {
       const url = `${BASE_URL}/api/admin/blog/${blog._id}`;
 
@@ -98,6 +102,7 @@ const BlogEditor = ({ blogObj }) => {
     } catch (error) {
       handleApiError();
     }
+    setSaving(false);
   };
 
   const handleTextarea = (e) => {
@@ -108,6 +113,13 @@ const BlogEditor = ({ blogObj }) => {
 
   useEffect(() => {
     hljs.highlightAll();
+  }, []);
+
+  useEffect(() => {
+    setInterval(() => {
+      // console.log("interval");
+      saveBlog();
+    }, 60000);
   }, []);
 
   return (
@@ -141,6 +153,7 @@ const BlogEditor = ({ blogObj }) => {
           <TextEditor content={content} setContent={setcontent} />
         </div>
         <div className="md:w-1/4">
+          {saving && <p>saving</p>}
           <BlogSideBar
             blog={blog}
             setBlog={setBlog}
