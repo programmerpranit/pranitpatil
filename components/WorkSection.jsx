@@ -25,6 +25,11 @@ const WorkSection = () => {
       </div>
       <div className=" flex justify-center flex-wrap mt-20">
         <SmallWork
+          image={"/work/UI/malshej-web.jpg"}
+          title={"Malshej Agro Resort"}
+          url={"https://www.malshejagro.com/"}
+        />
+        <SmallWork
           image={"/work/aidni/aidni.jpg"}
           title={"Aidni International"}
           url={"https://aidniinternational.com/"}
@@ -39,12 +44,6 @@ const WorkSection = () => {
           image={"/work/UI/darban.png"}
           title={"Darban Resort"}
           url={"https://www.darbanresort.com/"}
-        />
-
-        <SmallWork
-          image={"/work/UI/malshej-agro.png"}
-          title={"Malshej Agro Resort"}
-          url={"https://www.malshejagro.com/"}
         />
 
         <SmallWork
