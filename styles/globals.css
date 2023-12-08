@@ -39,6 +39,7 @@ h1 {
 h2 {
   font-size: 38px;
   font-weight: 600;
+  line-height: 48px;
 }
 
 h3 {
@@ -191,7 +192,7 @@ pre::-webkit-scrollbar {
 
   h2 {
     font-size: 28px;
-    line-height: 28px;
+    line-height: 38px;
     padding-bottom: 8px;
     padding-top: 4px;
   }

@@ -26,11 +26,11 @@ const BlogEditor = ({ blogObj }) => {
 
   const router = useRouter();
 
-  function saveBlog() {
+  function saveBlog(t) {
     // setBlog({...blog, content: content})
     console.log("saving");
     if (blog?._id) {
-      updateBlog();
+      updateBlog(t);
       console.log("PUT");
       console.log(blog);
       console.log(content);
@@ -81,7 +81,7 @@ const BlogEditor = ({ blogObj }) => {
     setSaving(false);
   };
 
-  const updateBlog = async () => {
+  const updateBlog = async (t) => {
     setSaving(true);
     try {
       const url = `${BASE_URL}/api/admin/blog/${blog._id}`;
@@ -98,7 +98,9 @@ const BlogEditor = ({ blogObj }) => {
       console.log(data);
       const res = await axios.put(url, data);
       setBlog(res.data.blog);
-      toast.success(res.data.message);
+      if (t) {
+        toast.success(res.data.message);
+      }
     } catch (error) {
       handleApiError();
     }
@@ -113,13 +115,6 @@ const BlogEditor = ({ blogObj }) => {
 
   useEffect(() => {
     hljs.highlightAll();
-  }, []);
-
-  useEffect(() => {
-    setInterval(() => {
-      // console.log("interval");
-      saveBlog();
-    }, 60000);
   }, []);
 
   return (
@@ -150,10 +145,14 @@ const BlogEditor = ({ blogObj }) => {
             placeholder="Title"
           ></textarea>
 
-          <TextEditor content={content} setContent={setcontent} />
+          <TextEditor
+            content={content}
+            setContent={setcontent}
+            saveBlog={saveBlog}
+          />
         </div>
         <div className="md:w-1/4">
-          {saving && <p>saving</p>}
+          {saving && <p className="text-xl text-blue-500">saving</p>}
           <BlogSideBar
             blog={blog}
             setBlog={setBlog}

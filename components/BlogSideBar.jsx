@@ -15,7 +15,7 @@ const BlogSideBar = ({ blog, setBlog, saveBlog, toggleDraft }) => {
 
   useEffect(() => {
     if (url.endsWith(".png") || url.endsWith(".jpg") || url.endsWith(".jpeg")) {
-      console.log("Perfect")
+      console.log("Perfect");
       setBlog({ ...blog, image: url });
     }
   }, [url]);
@@ -30,7 +30,7 @@ const BlogSideBar = ({ blog, setBlog, saveBlog, toggleDraft }) => {
           >
             {blog?.published ? "Published" : "Draft"}
           </button>
-          <button onClick={saveBlog} className="bg-primary">
+          <button onClick={() => saveBlog(true)} className="bg-primary">
             Save
           </button>
         </div>

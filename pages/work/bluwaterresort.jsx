@@ -1,171 +1,240 @@
 import Image from "next/image";
 import React from "react";
+import { FaArrowUpWideShort } from "react-icons/fa6";
+import { PiCursorClickBold } from "react-icons/pi";
+import { RiSeoLine } from "react-icons/ri";
 
-const BluWaterResort = () => {
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import { Autoplay } from "swiper/modules";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+const Bluwater = () => {
   return (
     <>
-      <div className="max-w-6xl mx-auto p-5">
-        <h2 className="leading-10">
-          Blu Water Resort - a User-Friendly Booking Website
-        </h2>
-        <p className="text-lg py-3">Full Stack Developer - Freelance</p>
-        <div className=" mx-auto max-w-4xl ">
+      {/* Top Section */}
+      <section className="flex flex-col md:flex-row mx-auto max-w-7xl gap-5 my-10 ">
+        <div className="md:w-1/2 flex flex-col justify-center items-center p-5 md:px-10">
+          <h2 className="text-center">
+            A User-Friendly Resort Booking Website
+          </h2>
+          <br />
+          <p className="text-center">
+            Blu Water Resort. Seamlessly Connecting Guests to Unforgettable
+            Stays
+          </p>
+          <a className="font-semibold mt-2" href="https://bluwaterresort.in">
+            View Website
+          </a>
+        </div>
+        <div className="md:w-1/2">
           <Image
             src={"/work/blu/bluwaterresort.png"}
-            width={1000}
-            height={1000}
+            width={700}
+            height={700}
             alt=""
-            className=" my-5  rounded-lg"
           />
         </div>
+      </section>
 
-        <h3>Introduction</h3>
-        <p>
-          The aim of this case study is to present the development and
-          implementation of a user-friendly resort booking website. This website
-          provides a seamless and convenient booking experience for customers,
-          allowing them to easily explore and reserve accommodations at the
-          resort. By leveraging modern web technologies and an intuitive user
-          interface, the website aims to enhance the overall customer experience
-          and drive increased bookings for the resort.
-        </p>
-
-        <br />
-        <br />
-
-        <h3>Background</h3>
-        <p>
-          The resort, located in a picturesque destination at Malshej Ghat, was
-          renowned for its breathtaking views, luxurious accommodations, and a
-          wide range of recreational activities. However, the resort faced
-          challenges in streamlining their booking process. As a result,
-          potential guests often encountered difficulties while trying to make
-          reservations, leading to missed opportunities and decreased customer
-          satisfaction.
-        </p>
-        <br />
-        <br />
-        <h3>Goals and Objectives</h3>
-        <p>
-          Develop a user-friendly website that enables guests to explore
-          available accommodations and book them effortlessly. Improve the
-          overall user experience by implementing a responsive design that works
-          seamlessly across various devices.
-        </p>
-        <p>
-          Streamline the booking process, reducing the number of steps required
-          and minimizing customer frustration. Integrate a secure payment
-          gateway to facilitate hassle-free and secure transactions. Enhance the
-          resort&apos;s online presence and increase visibility by
-          <strong> optimizing the website for search engines.</strong>
-        </p>
-
-        <br />
-
-        <div className="flex max-md:flex-col p-5 gap-5">
-          <Image
-            src={"/work/blu/blu-booking.jpg"}
-            width={2000}
-            height={1000}
-            alt=""
-            className="md:w-1/2"
-          />
-          <Image
-            src={"/work/blu/blu-booking-2.jpg"}
-            width={2000}
-            height={1000}
-            alt=""
-            className="md:w-1/2"
-          />
+      {/* Detail Strip  */}
+      <section className="px-5 py-10  bg-primary bg-opacity-5 my-20">
+        <div className="flex flex-col md:flex-row justify-around mx-auto max-w-7xl gap-10">
+          <div className="flex flex-col justify-center items-center">
+            <p className="font-semibold text-lg pb-2">Role</p>
+            <p>Freelance Developer</p>
+          </div>
+          <div className="flex flex-col justify-center items-center">
+            <p className="font-semibold text-lg pb-2">Project Type</p>
+            <p> Web App</p>
+          </div>
+          <div className="flex flex-col justify-center items-center">
+            <p className="font-semibold text-lg pb-2">Duration</p>
+            <p>14 Weeks</p>
+          </div>
         </div>
+      </section>
+      {/* Business Objectives  */}
+      <section className=" mx-auto max-w-7xl gap-5 my-10 ">
+        <h2 className="text-center">Business Objectives</h2>
         <br />
+        <p className="text-center p-5">
+          The Resort Booking Website aimed to revolutionize the guest experience
+          by providing an intuitive platform for hassle-free booking and
+          seamless access to the resort amenities. With a focus on user-friendly
+          design and robust functionality, the goal was to enhance customer
+          satisfaction and streamline the booking process.
+        </p>
+        <div className="flex flex-col md:flex-row py-10">
+          <div className="md:w-1/3 p-5">
+            <PiCursorClickBold
+              className="mx-auto text-primary text-opacity-80"
+              size={50}
+            />
+            <br />
+            <h3 className="text-center pb-2">Enhanced User Experience</h3>
 
-        <h3>Approach</h3>
-        <p>
-          The resort management team collaborated with me to create a robust and
-          intuitive booking website. The following steps were undertaken to
-          achieve the project goals:
-        </p>
-        <br />
-        <p>
-          <strong>Requirement Gathering: </strong>
-          Detailed discussions were held with resort stakeholders to understand
-          their specific needs and requirements. This involved identifying
-          target audiences, desired features, and any unique aspects of the
-          resort that needed to be highlighted.
-        </p>
-        <p>
-          <strong>Design and User Interface: </strong>
-          The design was optimized to reflect the resort&apos;s brand identity,
-          with attention to aesthetics and usability.
-        </p>
-        <p>
-          <strong>Development: </strong>
-          Leveraging modern web technologies like Next.js, MongoDB, Tailwind
-          CSS, I built the website using a combination of frontend and backend
-          frameworks. They ensured the website was responsive, allowing users to
-          access it seamlessly from desktops and smartphones.
-        </p>
-        <p>
-          <strong>Accommodation Listings and Availability: </strong>A robust
-          database management system was implemented to store and retrieve
-          information about available accommodations, their amenities, pricing,
-          and availability. This allowed users to explore various accommodation
-          options and check their availability in real-time.
-        </p>
+            <p className="text-center ">
+              Simplify the booking process and provide an engaging, intuitive
+              interface for users.
+            </p>
+          </div>
+          <div className="md:w-1/3 p-5">
+            <FaArrowUpWideShort
+              className="mx-auto text-primary text-opacity-80"
+              size={50}
+            />
+            <br />
+            <h3 className="text-center pb-2">Increased Bookings</h3>
 
-        <p>
-          <strong>Booking Process: </strong>
-          The booking process was streamlined to minimize the number of steps
-          required. Users could select their desired dates, choose from
-          available accommodation options, and proceed to the payment gateway
-          securely. User-friendly forms and clear instructions were implemented
-          to guide users through the process effortlessly.
-        </p>
-        <p>
-          <strong>Payment Gateway Integration: </strong>
-          To ensure secure and reliable transactions, a AirPay payment gateway
-          was integrated into the website. This allowed users to make payments
-          using various methods such as credit cards, debit cards, and online
-          wallets, with dual encryption and robust security measures in place.
-        </p>
-        <p>
-          <strong>Search Engine Optimization (SEO): </strong>
-          The website was optimized for search engines, incorporating relevant
-          keywords, meta tags, and other SEO best practices. This helped improve
-          the website&apos;s visibility in search engine results and attract
-          organic traffic.
-        </p>
+            <p className="text-center">
+              Drive more online bookings through an efficient and appealing
+              platform.
+            </p>
+          </div>
+          <div className="md:w-1/3 p-5">
+            <RiSeoLine
+              className="mx-auto text-primary text-opacity-80"
+              size={50}
+            />
+            <br />
+            <h3 className="text-center pb-2">Improved Accessibility & SEO</h3>
 
-        <br />
+            <p className="text-center">
+              Ensure accessibility across various devices and browsers to reach
+              a wider audience.
+            </p>
+          </div>
+        </div>
+      </section>
 
-        {/** Tech Stack Used */}
+      {/* Project Development Considerations  */}
+      <section className="flex flex-col md:flex-row mx-auto max-w-7xl md:gap-5 my-20 ">
+        <div className="md:w-1/2 flex flex-col justify-center items-center p-5 px-10">
+          <h2 className="text-center">Project Development Considerations</h2>
+        </div>
+        <div className="md:w-1/2 p-5">
+          <p className="pb-2">
+            To develop a responsive web app for hassle-free room booking.With a
+            focus on user-friendly design and robust functionality.
+          </p>
 
-        <br />
-        <h3>Results and Outcomes:</h3>
-        <p>
-          The implementation of the user-friendly resort booking website yielded
-          several positive outcomes:
-        </p>
-        <br />
-        <p>
-          <strong>Improved User Experience: </strong>The intuitive design and
-          streamlined booking process significantly enhanced the user
-          experience, resulting in reduced bounce rates and increased user
-          engagement.
-        </p>
-        <p>
-          <strong>Increased Bookings: </strong>The simplified booking process,
-          coupled with an appealing and informative website, led to a
-          substantial increase in bookings and revenue for the resort.
-        </p>
-        <p>
-          <strong>Higher Customer Satisfaction: </strong>Positive feedback from
-          guests indicated a high level of satisfaction with the website.
-        </p>
-      </div>
+          <ul className="list-disc list-inside">
+            <li>
+              <strong>Real-Time Booking Integration:</strong> Synchronized
+              website and resort database for instant room availability updates,
+              ensuring accurate and timely booking information for users
+              convenience.
+            </li>
+            <li>
+              <strong>Responsive Design Implementation:</strong> Crafted a
+              mobile-first design strategy, ensuring an intuitive and consistent
+              user experience across various devices and screen sizes.
+            </li>
+            <li>
+              <strong>Secure Payment Gateway Integration:</strong> Implemented a
+              robust and encrypted payment gateway, prioritizing user data
+              security while facilitating seamless and trustworthy online
+              transactions.
+            </li>
+          </ul>
+        </div>
+      </section>
+      {/* Tech Stack Used  */}
+      <section className="mx-auto max-w-7xl  my-10">
+        <h2 className="text-center">Tech Stack Used</h2>
+        <div className="flex flex-col md:flex-row py-10 gap-5 justify-around ">
+          <div className=" flex flex-col  items-center">
+            <Image
+              className="h-20 object-contain"
+              width={70}
+              height={70}
+              src={"/stack/nextjs.png"}
+              alt=""
+            />
+            <p className="font-semibold pt-2">Next Js</p>
+          </div>
+          <div className=" flex flex-col  items-center">
+            <Image
+              className="h-20 object-contain"
+              width={70}
+              height={70}
+              src={"/stack/tailwind-css.png"}
+              alt=""
+            />
+            <p className="font-semibold pt-2">Tailwind Css</p>
+          </div>
+          <div className=" flex flex-col  items-center">
+            <Image
+              className="h-20 object-contain"
+              width={70}
+              height={70}
+              src={"/stack/mongodb.png"}
+              alt=""
+            />
+            <p className="font-semibold pt-2">MongoDB</p>
+          </div>
+          <div className=" flex flex-col  items-center">
+            <Image
+              className="h-20 object-contain"
+              width={70}
+              height={70}
+              src={"/stack/nodejs.png"}
+              alt=""
+            />
+            <p className="font-semibold pt-2">Node Js</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Results */}
+      <section className="flex flex-col md:flex-row mx-auto max-w-7xl gap-5 my-10 py-20">
+        <div className="md:w-1/2 flex flex-col justify-center items-center p-5 px-10">
+          <h2 className="text-center">Result</h2>
+          <br />
+          <p className="text-center">
+            Within the first six months of launch, online bookings increased by
+            40%. Positive feedback from users citing the website ease of
+            navigation and booking process. Achieved a mobile responsiveness
+            rate of 90%, catering to a diverse range of devices and users.
+          </p>
+        </div>
+        <div className="md:w-1/2">
+          <Swiper
+            spaceBetween={30}
+            centeredSlides={true}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            modules={[Autoplay]}
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              <Image
+                src={"/work/blu/blu-booking.jpg"}
+                width={700}
+                height={700}
+                alt=""
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image
+                src={"/work/blu/blu-booking-2.jpg"}
+                width={700}
+                height={700}
+                alt=""
+              />
+            </SwiperSlide>
+          </Swiper>
+        </div>
+      </section>
     </>
   );
 };
 
-export default BluWaterResort;
+export default Bluwater;

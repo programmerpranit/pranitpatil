@@ -4,6 +4,11 @@ const About = () => {
       <div className="max-w-6xl m-auto p-5">
         <h2 className=" my-5">About Me</h2>
 
+        <a href="/resume-pranit-patil.pdf" download>
+          <button className="bg-primary">Resume</button>
+        </a>
+        <br />
+        <br />
         <div className="hidden">I am going to add a parallex effect here</div>
 
         <p>

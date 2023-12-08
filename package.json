@@ -31,8 +31,10 @@
     "nextjs-progressbar": "^0.0.16",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-icons": "^4.12.0",
     "react-toastify": "^9.1.2",
     "slugify": "^1.6.5",
+    "swiper": "^11.0.5",
     "universal-cookie": "^4.0.4"
   },
   "devDependencies": {
