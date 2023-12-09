@@ -1,251 +1,213 @@
 import Image from "next/image";
 import React from "react";
+import { GrDocumentPerformance } from "react-icons/gr";
+import { BiUserCheck } from "react-icons/bi";
+import { MdOutlineAnalytics } from "react-icons/md";
 
 const LuckyNumbers = () => {
   return (
     <>
-      <div className="max-w-6xl mx-auto p-5">
-        <h2 className="leading-10">
-          Lucky Numbers Game - Modernize the classic 1980s TV show
-        </h2>
-        <p className="text-lg py-3">Full Stack Developer - WebXStudio</p>
-        <br />
-        <div className=" mx-auto max-w-4xl ">
+      {/* Top Section */}
+      <section className="flex flex-col md:flex-row mx-auto max-w-7xl gap-5 my-10 ">
+        <div className="md:w-1/2 flex flex-col justify-center items-center p-5 md:px-10">
+          <h2 className="text-center">
+            Reviving a Classic TV Show into an Engaging Mobile Gaming Experience
+          </h2>
+          <br />
+          <p className="text-center">
+            The Lucky Numbers Game aimed to revive the classic 80s TV show,
+            transforming it into an engaging mobile gaming experience
+          </p>
+        </div>
+        <div className="md:w-1/2 p-5">
           <Image
+            className="rounded-xl"
             src={"/work/luckynumbers/mockups.png"}
-            width={1000}
-            height={1000}
+            width={700}
+            height={700}
             alt=""
-            className=" my-5  rounded-lg"
           />
         </div>
-        <br />
-        <br />
+      </section>
 
-        <p>
-          The &quot;Lucky Numbers Game&quot; is a modernized mobile application
-          based on the popular 1980s TV show &quot;Lucky Numbers.&quot; As the
-          Full Stack Developer Lead, I had the privilege of leading the
-          development team and handling the entire application lifecycle. The
-          project involved creating a user-friendly and engaging React Native
-          app for players and an efficient Admin Panel to manage the game and
-          users.
-        </p>
-
-        <br />
-
-        <h3>Background</h3>
-        <p>
-          The &quot;Lucky Numbers Game&quot; project aimed to modernize the
-          classic 1980s TV show &quot;Lucky Numbers&quot; by transforming it
-          into an engaging and user-friendly mobile gaming experience. Before
-          our involvement, there was an existing app based on the TV show, but
-          it suffered from numerous bugs and performance issues. The app&apos;s
-          lackluster performance and outdated design hindered user experience.
-        </p>
-        <br />
-        <br />
-        <h3>Goals and Objectives</h3>
-        {/* <br /> */}
-        <p>
-          <strong> Enhance Performance and Stability:</strong>
-          The primary goal of the project was to address the performance issues
-          and bugs that plagued the original app. We aimed to optimize the
-          app&apos;s speed, reduce loading times, and ensure smooth gameplay for
-          an uninterrupted user experience.
-        </p>
-        <p>
-          <strong>Modernize the User Interface:</strong>
-          Our objective was to give the app a fresh and modern look while
-          retaining elements that would evoke nostalgia for fans of the original
-          TV show. An appealing and intuitive design was essential to attract
-          new users and retain existing ones.
-        </p>
-
-        <p>
-          <strong>Develop an Access-based Admin Panel:</strong>
-          To streamline game management, we aimed to create an efficient and
-          secure admin panel with role-based access control. This would empower
-          administrators to handle questions, users, and game sessions
-          effectively.
-        </p>
-
-        <p>
-          <strong>Integrate Robust Authentication</strong>
-          Security was a top priority, and we aimed to implement strong
-          authentication mechanisms to protect user data and prevent
-          unauthorized access to the app.
-        </p>
-
-        <p>
-          <strong>Improve Overall User Experience</strong>
-          By revamping the app&apos;s design, enhancing performance, and
-          incorporating real-time gameplay, we aimed to provide a delightful and
-          immersive user experience that would keep players coming back for
-          more.
-        </p>
-
-        <br />
-        <br />
-
-        <h3>Tech Stack Used</h3>
-        <br />
-        <div className="flex max-md:flex-col p-5 gap-5">
-          <div className="">
-            <Image
-              src={"/stack/react-native.png"}
-              width={1000}
-              height={500}
-              alt=""
-              className="h-44 object-contain"
-            />
-            <p className="mt-5 text-center font-semibold">React Native</p>
+      {/* Detail Strip  */}
+      <section className="px-5 py-10  bg-purple-400 bg-opacity-5 my-20">
+        <div className="flex flex-col md:flex-row justify-around mx-auto max-w-7xl gap-10">
+          <div className="flex flex-col justify-center items-center">
+            <p className="font-semibold text-lg pb-2">Role</p>
+            <p>Full Stack Developer - Webxstudio</p>
           </div>
-          <div className="">
-            <Image
-              src={"/stack/nextjs.webp"}
-              width={1000}
-              height={500}
-              alt=""
-              className="h-44 object-contain"
-            />
-            <p className="mt-5 text-center font-semibold">Next Js</p>
+          <div className="flex flex-col justify-center items-center">
+            <p className="font-semibold text-lg pb-2">Project Type</p>
+            <p>Mobile App & Admin Panel </p>
           </div>
-          <div className="">
-            <Image
-              src={"/stack/supabase.png"}
-              width={1000}
-              height={500}
-              alt=""
-              className="h-44 object-contain"
-            />
-            <p className="mt-5 text-center font-semibold">Supabase</p>
-          </div>
-          <div className="">
-            <Image
-              src={"/stack/postgres.png"}
-              width={1000}
-              height={500}
-              alt=""
-              className="h-44 object-contain"
-            />
-            <p className="mt-5 text-center font-semibold">Postgresql</p>
+          <div className="flex flex-col justify-center items-center">
+            <p className="font-semibold text-lg pb-2">Duration</p>
+            <p>16 Weeks</p>
           </div>
         </div>
+      </section>
+      {/* Business Objectives  */}
+      <section className=" mx-auto max-w-7xl gap-5 my-10 ">
+        <h2 className="text-center">Business Objectives</h2>
         <br />
+        <p className="text-center p-5">
+          The Lucky Numbers Game aimed to revive the classic 80s TV show,
+          transforming it into an engaging mobile gaming experience. Before our
+          involvement, the existing app suffered from bugs, performance issues,
+          and an outdated design, hampering user experience.
+        </p>
+        <div className="flex flex-col md:flex-row py-10">
+          <div className="md:w-1/3 p-5">
+            <GrDocumentPerformance
+              className="mx-auto text-purple-400 "
+              size={50}
+            />
+            <br />
+            <h3 className="text-center pb-2">
+              Enhanced Performance & Stability
+            </h3>
+            <p className="text-center ">
+              Address and resolve existing bugs, ensuring a smoother and more
+              stable app performance.
+            </p>
+          </div>
+          <div className="md:w-1/3 p-5">
+            <BiUserCheck className="mx-auto text-purple-400 " size={50} />
+            <br />
+            <h3 className="text-center pb-2">Modernized User Interface</h3>
 
-        <h3>Development Process</h3>
+            <p className="text-center">
+              Revamp the design for a contemporary, user-friendly interface,
+              enhancing engagement and accessibility.
+            </p>
+          </div>
+          <div className="md:w-1/3 p-5">
+            <MdOutlineAnalytics
+              className="mx-auto text-purple-400 "
+              size={50}
+            />
+            <br />
+            <h3 className="text-center pb-2">
+              Development of Access-based Admin Panel
+            </h3>
 
-        {/* <br /> */}
-        <p>
-          <strong>Project Planning and Requirements Gathering:</strong>
-          Collaborated with stakeholders, including product managers and game
-          designers, to understand their vision for the modernized Lucky Numbers
-          Game. Conducted a comprehensive analysis of the existing app&apos;s
-          issues and user feedback to identify pain points and improvement
-          opportunities.
-        </p>
-        <p>
-          <strong>Architecture and Tech Stack Selection: </strong>
-          After considering the project&apos;s requirements and scalability
-          needs, we opted for React Native as the development framework to
-          ensure cross-platform compatibility and a faster development cycle. We
-          Chose NextJs for Admin Panel also additional libraries and tools to
-          optimize performance and deliver a seamless user experience.
-        </p>
-        <p>
-          <strong>Team Management: </strong>
-          As the Full Stack Developer Lead, I managed a team of three
-          developers, ensuring clear communication, well-defined tasks, and
-          timely progress updates. Encouraged teamwork and knowledge sharing to
-          leverage the strengths of each team member
-        </p>
-        <p>
-          <strong>React Native App Development and UI/UX Design: </strong>A
-          Started the app development process from scratch, addressing the
-          identified performance issues and bugs to create a stable foundation.
-          Collaborated with UI/UX designers to create a visually appealing and
-          intuitive user interface that aligned with the game&apos;s theme and
-          branding
-        </p>
+            <p className="text-center">
+              Create an efficient admin panel for streamlined content management
+              and updates.
+            </p>
+          </div>
+        </div>
+      </section>
 
-        <p>
-          <strong>Admin Panel Development </strong>
-          Designed and developed a robust admin panel with role-based access
-          control, allowing administrators to manage various aspects of the
-          game, such as analytics, users, and game sessions. Prioritized
-          security measures in the admin panel to protect sensitive information.
-        </p>
-        <p>
-          <strong>Game Logic: </strong>
-          Implemented and refined the game logic to ensure best user experience
-          and winner determination.
-        </p>
-        <p>
-          <strong>Authentication and Security: </strong>
-          Integrated secure authentication mechanisms, such as OAuth (google,
-          facebook, apple) and Phone Number Authentication, to safeguard user
-          data and ensure secure login and registration processes.
-        </p>
+      {/* Project Development Considerations  */}
+      <section className="flex flex-col  md:flex-row mx-auto max-w-7xl md:gap-5 my-20 ">
+        <div className="md:w-1/2 flex flex-col justify-center items-center p-5 px-10">
+          <h2 className="text-center">Project Development Considerations</h2>
+        </div>
+        <div className="md:w-1/2 p-5">
+          <ul className="list-disc list-inside">
+            <li>
+              <strong>Performance Enhancement:</strong> Resolved bugs and
+              boosted stability for a smoother experience through rigorous
+              debugging and code optimization, minimizing crashes and improving
+              overall functionality.
+            </li>
+            <li>
+              <strong>User Interface Revamp:</strong>Modernized the outdated
+              design, prioritizing user engagement by employing contemporary
+              design principles for an intuitive, appealing interface.
+            </li>
+            <li>
+              <strong>Access-based Admin Panel:</strong> Simplified content
+              management with an intuitive, access-based admin panel,
+              facilitating easy updates and maintenance without technical
+              complexities or barriers.
+            </li>
+          </ul>
+        </div>
+      </section>
+      {/* Tech Stack Used  */}
+      <section className="mx-auto max-w-7xl  my-10">
+        <h2 className="text-center">Tech Stack Used</h2>
+        <div className="flex flex-col md:flex-row py-10 gap-5 justify-around ">
+          <div className=" flex flex-col  items-center">
+            <Image
+              className="h-20 object-contain"
+              width={70}
+              height={70}
+              src={"/stack/react.png"}
+              alt=""
+            />
+            <p className="font-semibold pt-2">React Native</p>
+          </div>
+          <div className=" flex flex-col  items-center">
+            <Image
+              className="h-20 object-contain"
+              width={70}
+              height={70}
+              src={"/stack/supabase.png"}
+              alt=""
+            />
+            <p className="font-semibold pt-2">Supabase</p>
+          </div>
+          <div className=" flex flex-col  items-center">
+            <Image
+              className="h-20 object-contain"
+              width={70}
+              height={70}
+              src={"/stack/postgres.png"}
+              alt=""
+            />
+            <p className="font-semibold pt-2">Postgres</p>
+          </div>
+          <div className=" flex flex-col  items-center">
+            <Image
+              className="h-20 object-contain"
+              width={70}
+              height={70}
+              src={"/stack/nextjs.png"}
+              alt=""
+            />
+            <p className="font-semibold pt-2">Next Js</p>
+          </div>
 
-        <br />
+          <div className=" flex flex-col  items-center">
+            <Image
+              className="h-20 object-contain"
+              width={70}
+              height={70}
+              src={"/stack/nodejs.png"}
+              alt=""
+            />
+            <p className="font-semibold pt-2">Node Js</p>
+          </div>
+        </div>
+      </section>
 
-        {/** Tech Stack Used */}
-
-        <br />
-        <h3>Results and Outcomes:</h3>
-        <p>
-          The successful execution of the Lucky Numbers Game App project
-          resulted in a revitalized and high-performance mobile gaming
-          experience. The achieved outcomes and results include:
-        </p>
-        <br />
-        <p>
-          <strong>Improved Performance: </strong>Through optimization efforts
-          and bug fixes, we significantly enhanced the app performance, reducing
-          loading times and ensuring a smoother gameplay experience.
-        </p>
-        <p>
-          <strong>Modern User Interface: </strong>The modernized UI/UX design
-          breathed new life into the app, captivating users with its fresh look
-          while still paying homage to the TV show&apos;s nostalgic elements.
-        </p>
-        <p>
-          <strong>Efficient Admin Panel: </strong>The access-based admin panel
-          simplified game management and allowed administrators to handle
-          various aspects of the app with ease.
-        </p>
-        <p>
-          <strong>Enhanced Security: </strong>The integration of robust
-          authentication mechanisms ensured that user data remained secure,
-          establishing trust among players.
-        </p>
-
-        <br />
-        <h3>Conclusion:</h3>
-        <br />
-        <p>
-          As the Full Stack Developer Lead for the Lucky Numbers Game App, I had
-          the privilege of modernizing a beloved TV show into an interactive and
-          engaging mobile gaming experience. By addressing performance issues,
-          enhancing the user interface, and incorporating real-time multiplayer
-          functionality, we successfully revitalized the app, attracting a wider
-          audience and earning positive user feedback.
-        </p>
-        <p>
-          The project allowed me to demonstrate my expertise in React Native app
-          development, game logic implementation, and security measures.
-          Moreover, managing a team of developers and collaborating with
-          stakeholders honed my leadership and communication skills.
-        </p>
-        <p>
-          The Lucky Numbers Game App case study showcases my ability to deliver
-          high-quality and innovative applications, and I am proud to have been
-          a part of this project. I eagerly anticipate taking on new challenges
-          and contributing to the development of future cutting-edge
-          applications.
-        </p>
-      </div>
+      {/* Results */}
+      <section className="flex flex-col md:flex-row mx-auto max-w-7xl gap-5 my-10 py-20">
+        <div className="md:w-1/2 flex flex-col justify-center items-center p-5 px-10">
+          <h2 className="text-center">Result</h2>
+          <br />
+          <p className="text-center">
+            Reduced app crashes by 60%, resulting in a smoother and more
+            reliable gaming experience. Received positive user feedback on the
+            revamped, user-friendly design, leading to a 40% increase in user
+            engagement. Enabled hassle-free content updates and management,
+            improving operational efficiency by 30%.
+          </p>
+        </div>
+        <div className="md:w-1/2 p-5">
+          <Image
+            className="rounded-xl"
+            src={"/work/luckynumbers/mockups.png"}
+            width={700}
+            height={700}
+            alt=""
+          />
+        </div>
+      </section>
     </>
   );
 };
