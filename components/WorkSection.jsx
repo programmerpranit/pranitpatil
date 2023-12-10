@@ -7,7 +7,7 @@ const WorkSection = () => {
     <>
       {/* Blu Resort Lucky Numbers Doublestar Aidni Website Api Day Mumbai */}
 
-      <div className="work flex md:flex-row flex-col justify-around mt-40">
+      <div className="work flex md:flex-row flex-wrap flex-col justify-around mt-40">
         <WorkCard
           image={"/work/blu/bluwaterresort.png"}
           title={"Blu Water Resort"}
@@ -21,6 +21,14 @@ const WorkSection = () => {
           title={"Lucky Number Game"}
           description={"Modernize the classic 1980s TV show"}
           url={"/work/luckynumbers"}
+        />
+        <WorkCard
+          image={"/work/doublestar/doublestar-light.png"}
+          title={"Double Star Game"}
+          description={
+            "Revamping Casino Betting for Mass Participation with User-Friendly Performance"
+          }
+          url={"/work/doublestar"}
         />
       </div>
       <div className=" flex justify-center flex-wrap mt-20">
