@@ -1,4 +1,4 @@
-import "@/styles/globals.css";
+import "@/app/globals.css";
 import "highlight.js/styles/vs2015.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
