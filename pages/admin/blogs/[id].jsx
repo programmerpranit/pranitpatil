@@ -9,10 +9,15 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
+import { useEditor, EditorContent } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
+import Image from "@tiptap/extension-image";
+import Link from "@tiptap/extension-link";
 
 // Using ES6 import syntax
 import hljs from "highlight.js/lib/core";
 import javascript from "highlight.js/lib/languages/javascript";
+import MenuBar from "@/components/MenuBar";
 
 // Then register the languages you need
 hljs.registerLanguage("javascript", javascript);
@@ -23,6 +28,20 @@ const BlogEditor = ({ blogObj }) => {
   const [content, setcontent] = useState(
     blogObj?.content ? blogObj?.content : "<p>Start Typing Here</p>"
   );
+
+  const editor = useEditor({
+    extensions: [
+      StarterKit,
+      Image,
+      Link.configure({
+        rel: "dofollow",
+        HTMLAttributes: {
+          class: " bg-primary bg-opacity-10",
+        },
+      }),
+    ],
+    content: content,
+  });
 
   const router = useRouter();
 
@@ -119,11 +138,11 @@ const BlogEditor = ({ blogObj }) => {
 
   return (
     <>
-      <div className="flex max-md:flex-col mt-5">
-        <div className="md:w-1/4">
+      <div className="flex md:flex-row flex-col mt-5">
+        <div className="md:w-1/4 ">
           <ImageSideBar />
         </div>
-        <div className="h-fit relative max-w-3xl md:w-1/2 p-5">
+        <div className="relative max-w-3xl md:w-1/2 p-5">
           <input
             type="text"
             value={blog?.category ? blog?.category : ""}
@@ -131,7 +150,7 @@ const BlogEditor = ({ blogObj }) => {
               setBlog({ ...blog, category: e.target.value });
             }}
             placeholder="category"
-            className="p-2 uppercase font-semibold outline-none"
+            className="p-2 uppercase  font-semibold outline-none"
           />
 
           <textarea
@@ -145,13 +164,18 @@ const BlogEditor = ({ blogObj }) => {
             placeholder="Title"
           ></textarea>
 
+          <div className="sticky top-0 py-5 bg-white z-50">
+            <MenuBar editor={editor} />
+          </div>
+
           <TextEditor
             content={content}
             setContent={setcontent}
             saveBlog={saveBlog}
+            editor={editor}
           />
         </div>
-        <div className="md:w-1/4">
+        <div className="md:w-1/4 ">
           {saving && <p className="text-xl text-blue-500">saving</p>}
           <BlogSideBar
             blog={blog}

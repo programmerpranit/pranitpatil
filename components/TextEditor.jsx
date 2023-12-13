@@ -12,25 +12,11 @@ import javascript from "highlight.js/lib/languages/javascript";
 // Then register the languages you need
 hljs.registerLanguage("javascript", javascript);
 
-const TextEditor = ({ content, setContent, saveBlog }) => {
+const TextEditor = ({ content, setContent, saveBlog, editor }) => {
   Image.configure({
     HTMLAttributes: {
       class: "inblog-image",
     },
-  });
-
-  const editor = useEditor({
-    extensions: [
-      StarterKit,
-      Image,
-      Link.configure({
-        rel: "dofollow",
-        HTMLAttributes: {
-          class: " bg-primary bg-opacity-10",
-        },
-      }),
-    ],
-    content: content,
   });
 
   const handleContentChange = () => {
@@ -56,8 +42,6 @@ const TextEditor = ({ content, setContent, saveBlog }) => {
 
   return (
     <>
-      <MenuBar editor={editor} />
-
       <EditorContent
         className="mt-5"
         onBlur={handleContentChange}
