@@ -1,7 +1,9 @@
-const About = () => {
+import React from "react";
+
+const About = (): JSX.Element => {
   return (
     <>
-      <div className="max-w-6xl m-auto p-5">
+      <div className="m-auto max-w-6xl p-5">
         <h2 className=" my-5">About Me</h2>
 
         <a href="/resume-pranit-patil.pdf" download>

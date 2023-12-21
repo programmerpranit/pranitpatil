@@ -1,12 +1,12 @@
 import Image from "next/image";
 import React from "react";
 
-const Footer = () => {
+const Footer = (): JSX.Element => {
   return (
     <>
-      <div className="p-5 text-center py-32">
+      <div className="p-5 py-32 text-center">
         <h2>Lets Connect</h2>
-        <div className="flex gap-5 justify-center py-5">
+        <div className="flex justify-center gap-5 py-5">
           <a href="https://www.linkedin.com/in/programmerpranit">
             <Image src={"/linkedin.webp"} width={30} height={30} alt="" />
           </a>
@@ -25,7 +25,7 @@ const Footer = () => {
             />
           </a>
         </div>
-        <p className="text-center text-lg pt-2">dev@pranitpatil.com</p>
+        <p className="pt-2 text-center text-lg">dev@pranitpatil.com</p>
       </div>
     </>
   );

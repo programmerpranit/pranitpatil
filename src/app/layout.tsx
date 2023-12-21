@@ -3,6 +3,7 @@ import { type Metadata } from "next";
 import "@/app/globals.css";
 import React from "react";
 import Navbar from "@/components/Navbar";
+import Footer from "./(home)/Footer";
 
 export const metadata: Metadata = {
   title: "Pranit Patil - Full Stack Developer",
@@ -32,6 +33,7 @@ export default function RootLayout({
       <body>
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

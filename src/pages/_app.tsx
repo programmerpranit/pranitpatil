@@ -7,9 +7,10 @@ import axios from "axios";
 import Navbar from "@/components/Navbar";
 import NextNProgress from "nextjs-progressbar";
 import Script from "next/script";
-import Footer from "@/components/Footer";
+import Footer from "@/app/(home)/Footer";
+import React from "react";
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps }: any): JSX.Element {
   axios.interceptors.request.use(
     (config) => {
       const token = localStorage.getItem("token");
