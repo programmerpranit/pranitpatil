@@ -19,12 +19,12 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = params.slug;
-  const res = await fetch(`${BASE_URL}/api/blog/${slug}`);
-  const data = await res.json();
+  await dbConnect();
+  const blog = await Blog.findOne({ slug });
 
   return {
-    title: data.blog.title,
-    description: data.blog.desc,
+    title: blog.title,
+    description: blog.desc,
   };
 }
 
@@ -35,13 +35,9 @@ export async function generateStaticParams(): Promise<any> {
 }
 
 async function getBlog(slug: string): Promise<BlogProps> {
-  const res = await fetch(`${BASE_URL}/api/blog/${slug}`);
-  if (!res.ok) {
-    throw Error("Unknown error");
-  }
-  const post = await res.json();
-  // console.log(post);
-  return post.blog;
+  await dbConnect();
+  const blog = await Blog.findOne({ slug });
+  return JSON.parse(JSON.stringify(blog));
 }
 
 const BlogPage = async ({

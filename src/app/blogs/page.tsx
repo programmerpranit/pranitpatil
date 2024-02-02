@@ -1,5 +1,6 @@
+import dbConnect from "@/middleware/mongo";
 import BlogCard from "./BlogCard";
-import { type IBlog } from "@/models/Blog";
+import { Blog, type IBlog } from "@/models/Blog";
 import { BASE_URL } from "@/utils/config";
 import React from "react";
 
@@ -11,9 +12,10 @@ interface BlogType extends IBlog, MongoBase {}
  */
 
 const fetchBlogs = async (): Promise<BlogType[]> => {
-  const res = await fetch(`${BASE_URL}/api/blog`);
-  const body = await res.json();
-  return body.blogs;
+  "use server";
+  await dbConnect();
+  const blogs = await Blog.find({ published: true });
+  return JSON.parse(JSON.stringify(blogs));
 };
 
 const AllBlogs = async (): Promise<JSX.Element> => {

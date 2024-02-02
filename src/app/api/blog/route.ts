@@ -7,7 +7,7 @@ import { Blog } from "@/models/Blog";
  * @returns A promise that resolves to a response object containing the fetched blogs.
  */
 
-export async function GET(req: Request): Promise<Response> {
+export async function GET(): Promise<Response> {
   try {
     await dbConnect();
     const blogs = await Blog.find({ published: true });
