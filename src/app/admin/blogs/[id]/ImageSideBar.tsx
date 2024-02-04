@@ -1,20 +1,23 @@
 import { handleApiError } from "@/helpers/apierror";
+import type { IImage } from "@/models/Image";
 import { BASE_URL } from "@/utils/config";
 import axios from "axios";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, type FormEvent } from "react";
 import { toast } from "react-toastify";
 
-const ImageSideBar = () => {
-  const [media, setMedia] = useState(null);
+interface ImageType extends IImage, MongoBase {}
+
+const ImageSideBar = (): JSX.Element => {
+  const [media, setMedia] = useState<File | null>(null);
   const [title, setTitle] = useState("");
   const [url, setUrl] = useState("");
 
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState<ImageType[]>([]);
 
   const [search, setSearch] = useState("");
 
-  const searchImages = async (e) => {
+  const searchImages = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
 
     try {
@@ -22,30 +25,28 @@ const ImageSideBar = () => {
 
       const res = await axios.get(url, {
         params: {
-          search: search,
+          search,
         },
       });
 
-      setImages(res.data.images);
+      setImages(res.data.images as ImageType[]);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const uploadImage = async (e) => {
-    e.preventDefault();
-
+  const uploadImage = async (): Promise<void> => {
     try {
       const url = `${BASE_URL}/api/admin/image/upload`;
 
       const data = new FormData();
-      data.append("media", media);
+      data.append("media", media as Blob);
       data.append("title", title);
 
-      let res = await axios.post(url, data);
+      const res = await axios.post(url, data);
 
       if (res.status === 200) {
-        setUrl(res.data.url);
+        setUrl(res.data.url as string);
         toast.success("Image Uploaded Successfully");
       }
     } catch (error) {
@@ -53,8 +54,8 @@ const ImageSideBar = () => {
     }
   };
 
-  const copyUrl = () => {
-    navigator.clipboard.writeText(url);
+  const copyUrl = (): void => {
+    void navigator.clipboard.writeText(url);
   };
 
   return (
@@ -62,43 +63,58 @@ const ImageSideBar = () => {
       <div className="p-5">
         <h3>Images</h3>
 
-        <div className="flex justify-between items-center my-5">
+        <div className="my-5 flex items-center justify-between">
           <p>Upload Image</p>
-          <button onClick={uploadImage} className="bg-primary">
+          <button
+            onClick={() => {
+              void uploadImage();
+            }}
+            className="bg-primary"
+          >
             Upload
           </button>
         </div>
         <input
           type="text"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          className="border p-1 px-2 my-2 w-full outline-none"
+          onChange={(e) => {
+            setTitle(e.target.value);
+          }}
+          className="my-2 w-full border p-1 px-2 outline-none"
           placeholder="Image Title"
         />
         <input
-          className="px-2 py-1 mt-1 w-full border outline-none rounded-md"
+          className="mt-1 w-full rounded-md border px-2 py-1 outline-none"
           type="file"
           accept="image/*"
-          onChange={(e) => setMedia(e.target.files[0])}
+          onChange={(e) => {
+            setMedia(e.target.files == null ? null : e.target.files[0]);
+          }}
           required
         />
-        <img src={media ? URL.createObjectURL(media) : ""} alt="" />
+        <img src={media != null ? URL.createObjectURL(media) : ""} alt="" />
 
-        {url != "" && (
+        {url !== "" && (
           <p
             onClick={copyUrl}
-            className="text-center my-2 cursor-pointer text-primary font-semibold"
+            className="my-2 cursor-pointer text-center font-semibold text-primary"
           >
             Copy Url
           </p>
         )}
 
-        <form onSubmit={(e) => searchImages(e)}>
+        <form
+          onSubmit={(e) => {
+            void searchImages(e);
+          }}
+        >
           <input
             type="text"
-            className="px-3 py-2 border border-secondary rounded outline-none w-full my-5"
+            className="my-5 w-full rounded border border-secondary px-3 py-2 outline-none"
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
             placeholder="Search Images"
           />
         </form>
@@ -106,7 +122,7 @@ const ImageSideBar = () => {
           {images.map((img) => (
             <div
               key={img._id}
-              className="border flex flex-col items-center gap-2 w-1/2 p-1"
+              className="flex w-1/2 flex-col items-center gap-2 border p-1"
             >
               <Image
                 src={img.url}
@@ -116,8 +132,10 @@ const ImageSideBar = () => {
                 height={200}
               />
               <p
-                className="p-2 cursor-pointer"
-                onClick={() => navigator.clipboard.writeText(img.url)}
+                className="cursor-pointer p-2"
+                onClick={() => {
+                  void navigator.clipboard.writeText(img.url);
+                }}
               >
                 Copy Url
               </p>

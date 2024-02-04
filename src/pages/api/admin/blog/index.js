@@ -1,6 +1,6 @@
 import dbConnect from "@/middleware/mongo";
 import { verifyAdmin } from "@/middleware/verifyToken";
-import Blog from "@/models/Blog";
+import { Blog } from "@/models/Blog";
 
 const handler = async (req, res) => {
   const admin = verifyAdmin(req);

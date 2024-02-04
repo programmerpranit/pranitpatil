@@ -1,34 +1,33 @@
+import type { IBlog } from "@/models/Blog";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const BlogCard = ({ blog }) => {
+interface BlogType extends IBlog, MongoBase {}
+
+const BlogCard = ({ blog }: { blog: BlogType }): JSX.Element => {
   return (
     <>
-      <div className="md:m-5 my-5 border border-gray-300 shadow-md rounded">
+      <div className="my-5 w-1/4 rounded border border-gray-300 shadow-md md:m-5">
         <Image
-          className="rounded-t h-48 object-cover"
+          className="h-48 rounded-t object-cover"
           src={blog?.image}
           width={500}
           height={400}
           alt={"blog img"}
         />
         <div className="p-4">
-          <p className="font-semibold text-gray-700 uppercase">
+          <p className="font-semibold uppercase text-gray-700">
             {blog?.category}
           </p>
           <h3 className="max-lines-3 my-2 leading-normal text-black hover:text-primary">
             {blog?.title}
           </h3>
-          {/* <p className="max-lines-3">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam fuga
-            vel asperiores enim debitis
-          </p> */}
+
           <div className="flex justify-between">
-            <Link href={`/blogs/${blog?.slug}`}>
-              <p className="text-primary font-semibold mt-2">Read More</p>
+            <Link href={`/admin/blogs/${blog._id}`}>
+              <p className="mt-2 font-semibold text-primary">Read More</p>
             </Link>
-            {/* <p className=" mt-2">3 min read</p> */}
           </div>
         </div>
       </div>

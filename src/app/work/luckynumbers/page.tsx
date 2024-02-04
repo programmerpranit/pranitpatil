@@ -4,12 +4,12 @@ import { GrDocumentPerformance } from "react-icons/gr";
 import { BiUserCheck } from "react-icons/bi";
 import { MdOutlineAnalytics } from "react-icons/md";
 
-const LuckyNumbers = () => {
+const LuckyNumbers = (): JSX.Element => {
   return (
     <>
       {/* Top Section */}
-      <section className="flex flex-col md:flex-row mx-auto max-w-7xl gap-5 my-10 ">
-        <div className="md:w-1/2 flex flex-col justify-center items-center p-5 md:px-10">
+      <section className="mx-auto my-10 flex max-w-7xl flex-col gap-5 md:flex-row ">
+        <div className="flex flex-col items-center justify-center p-5 md:w-1/2 md:px-10">
           <h2 className="text-center">
             Reviving a Classic TV Show into an Engaging Mobile Gaming Experience
           </h2>
@@ -19,7 +19,7 @@ const LuckyNumbers = () => {
             transforming it into an engaging mobile gaming experience
           </p>
         </div>
-        <div className="md:w-1/2 p-5">
+        <div className="p-5 md:w-1/2">
           <Image
             className="rounded-xl"
             src={"/work/luckynumbers/mockups.png"}
@@ -31,40 +31,40 @@ const LuckyNumbers = () => {
       </section>
 
       {/* Detail Strip  */}
-      <section className="px-5 py-10  bg-purple-400 bg-opacity-5 my-20">
-        <div className="flex flex-col md:flex-row justify-around mx-auto max-w-7xl gap-10">
-          <div className="flex flex-col justify-center items-center">
-            <p className="font-semibold text-lg pb-2">Role</p>
+      <section className="my-20 bg-purple-400  bg-opacity-5 px-5 py-10">
+        <div className="mx-auto flex max-w-7xl flex-col justify-around gap-10 md:flex-row">
+          <div className="flex flex-col items-center justify-center">
+            <p className="pb-2 text-lg font-semibold">Role</p>
             <p>Full Stack Developer - Webxstudio</p>
           </div>
-          <div className="flex flex-col justify-center items-center">
-            <p className="font-semibold text-lg pb-2">Project Type</p>
+          <div className="flex flex-col items-center justify-center">
+            <p className="pb-2 text-lg font-semibold">Project Type</p>
             <p>Mobile App & Admin Panel </p>
           </div>
-          <div className="flex flex-col justify-center items-center">
-            <p className="font-semibold text-lg pb-2">Duration</p>
+          <div className="flex flex-col items-center justify-center">
+            <p className="pb-2 text-lg font-semibold">Duration</p>
             <p>16 Weeks</p>
           </div>
         </div>
       </section>
       {/* Business Objectives  */}
-      <section className=" mx-auto max-w-7xl gap-5 my-10 ">
+      <section className=" mx-auto my-10 max-w-7xl gap-5 ">
         <h2 className="text-center">Business Objectives</h2>
         <br />
-        <p className="text-center p-5">
+        <p className="p-5 text-center">
           The Lucky Numbers Game aimed to revive the classic 80s TV show,
           transforming it into an engaging mobile gaming experience. Before our
           involvement, the existing app suffered from bugs, performance issues,
           and an outdated design, hampering user experience.
         </p>
-        <div className="flex flex-col md:flex-row py-10">
-          <div className="md:w-1/3 p-5">
+        <div className="flex flex-col py-10 md:flex-row">
+          <div className="p-5 md:w-1/3">
             <GrDocumentPerformance
               className="mx-auto text-purple-400 "
               size={50}
             />
             <br />
-            <h3 className="text-center pb-2">
+            <h3 className="pb-2 text-center">
               Enhanced Performance & Stability
             </h3>
             <p className="text-center ">
@@ -72,23 +72,23 @@ const LuckyNumbers = () => {
               stable app performance.
             </p>
           </div>
-          <div className="md:w-1/3 p-5">
+          <div className="p-5 md:w-1/3">
             <BiUserCheck className="mx-auto text-purple-400 " size={50} />
             <br />
-            <h3 className="text-center pb-2">Modernized User Interface</h3>
+            <h3 className="pb-2 text-center">Modernized User Interface</h3>
 
             <p className="text-center">
               Revamp the design for a contemporary, user-friendly interface,
               enhancing engagement and accessibility.
             </p>
           </div>
-          <div className="md:w-1/3 p-5">
+          <div className="p-5 md:w-1/3">
             <MdOutlineAnalytics
               className="mx-auto text-purple-400 "
               size={50}
             />
             <br />
-            <h3 className="text-center pb-2">
+            <h3 className="pb-2 text-center">
               Development of Access-based Admin Panel
             </h3>
 
@@ -101,12 +101,12 @@ const LuckyNumbers = () => {
       </section>
 
       {/* Project Development Considerations  */}
-      <section className="flex flex-col  md:flex-row mx-auto max-w-7xl md:gap-5 my-20 ">
-        <div className="md:w-1/2 flex flex-col justify-center items-center p-5 px-10">
+      <section className="mx-auto my-20  flex max-w-7xl flex-col md:flex-row md:gap-5 ">
+        <div className="flex flex-col items-center justify-center p-5 px-10 md:w-1/2">
           <h2 className="text-center">Project Development Considerations</h2>
         </div>
-        <div className="md:w-1/2 p-5">
-          <ul className="list-disc list-inside">
+        <div className="p-5 md:w-1/2">
+          <ul className="list-inside list-disc">
             <li>
               <strong>Performance Enhancement:</strong> Resolved bugs and
               boosted stability for a smoother experience through rigorous
@@ -128,9 +128,9 @@ const LuckyNumbers = () => {
         </div>
       </section>
       {/* Tech Stack Used  */}
-      <section className="mx-auto max-w-7xl  my-10">
+      <section className="mx-auto my-10  max-w-7xl">
         <h2 className="text-center">Tech Stack Used</h2>
-        <div className="flex flex-col md:flex-row py-10 gap-5 justify-around ">
+        <div className="flex flex-col justify-around gap-5 py-10 md:flex-row ">
           <div className=" flex flex-col  items-center">
             <Image
               className="h-20 object-contain"
@@ -139,7 +139,7 @@ const LuckyNumbers = () => {
               src={"/stack/react.png"}
               alt=""
             />
-            <p className="font-semibold pt-2">React Native</p>
+            <p className="pt-2 font-semibold">React Native</p>
           </div>
           <div className=" flex flex-col  items-center">
             <Image
@@ -149,7 +149,7 @@ const LuckyNumbers = () => {
               src={"/stack/supabase.png"}
               alt=""
             />
-            <p className="font-semibold pt-2">Supabase</p>
+            <p className="pt-2 font-semibold">Supabase</p>
           </div>
           <div className=" flex flex-col  items-center">
             <Image
@@ -159,7 +159,7 @@ const LuckyNumbers = () => {
               src={"/stack/postgres.png"}
               alt=""
             />
-            <p className="font-semibold pt-2">Postgres</p>
+            <p className="pt-2 font-semibold">Postgres</p>
           </div>
           <div className=" flex flex-col  items-center">
             <Image
@@ -169,7 +169,7 @@ const LuckyNumbers = () => {
               src={"/stack/nextjs.png"}
               alt=""
             />
-            <p className="font-semibold pt-2">Next Js</p>
+            <p className="pt-2 font-semibold">Next Js</p>
           </div>
 
           <div className=" flex flex-col  items-center">
@@ -180,14 +180,14 @@ const LuckyNumbers = () => {
               src={"/stack/nodejs.png"}
               alt=""
             />
-            <p className="font-semibold pt-2">Node Js</p>
+            <p className="pt-2 font-semibold">Node Js</p>
           </div>
         </div>
       </section>
 
       {/* Results */}
-      <section className="flex flex-col md:flex-row mx-auto max-w-7xl gap-5 my-10 py-20">
-        <div className="md:w-1/2 flex flex-col justify-center items-center p-5 px-10">
+      <section className="mx-auto my-10 flex max-w-7xl flex-col gap-5 py-20 md:flex-row">
+        <div className="flex flex-col items-center justify-center p-5 px-10 md:w-1/2">
           <h2 className="text-center">Result</h2>
           <br />
           <p className="text-center">
@@ -198,7 +198,7 @@ const LuckyNumbers = () => {
             improving operational efficiency by 30%.
           </p>
         </div>
-        <div className="md:w-1/2 p-5">
+        <div className="p-5 md:w-1/2">
           <Image
             className="rounded-xl"
             src={"/work/luckynumbers/mockups.png"}

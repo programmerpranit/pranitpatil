@@ -1,7 +1,6 @@
 import dbConnect from "@/middleware/mongo";
 import BlogCard from "./BlogCard";
 import { Blog, type IBlog } from "@/models/Blog";
-import { BASE_URL } from "@/utils/config";
 import React from "react";
 
 interface BlogType extends IBlog, MongoBase {}
