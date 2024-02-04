@@ -1,11 +1,11 @@
 import dbConnect from "@/middleware/mongo";
 import { verifyAdmin } from "@/middleware/verifyToken";
 import { Blog, type IBlog } from "@/models/Blog";
-import type { NextApiRequest } from "next";
 import { revalidatePath } from "next/cache";
+import type { NextRequest } from "next/server";
 
 export async function PUT(
-  req: NextApiRequest,
+  req: NextRequest,
   { params }: { params: { id: string } }
 ): Promise<Response> {
   const admin = verifyAdmin(req);
@@ -22,7 +22,7 @@ export async function PUT(
       image = "",
       desc = "",
       content = "",
-    } = req.body;
+    } = await req.json();
     const blog: IBlog | null = await Blog.findByIdAndUpdate(
       id,
       {
@@ -39,7 +39,7 @@ export async function PUT(
       revalidatePath(`/blogs/${blog.slug}`);
     }
     return Response.json(
-      { message: "Blog Updated Successfully" },
+      { message: "Blog Updated Successfully", blog },
       { status: 200 }
     );
   } catch (error) {

@@ -1,22 +1,21 @@
 import type { IPayload } from "@/types/mongo";
 import { verify } from "jsonwebtoken";
-import type { NextApiRequest } from "next";
+import type { NextRequest } from "next/server";
 
-export const verifyAdmin = (req: NextApiRequest): any | null => {
+export const verifyAdmin = (req: NextRequest): any | null => {
   try {
-    const { authorization } = req.headers;
+    const token = req.cookies.get("authorization")?.value;
 
-    const bearer = authorization?.split(" ");
-    if (bearer === undefined) return null;
-    const token = bearer[1];
+    if (token === undefined) {
+      throw Error("JWT Token Not Found");
+    }
 
-    const adminSec = process.env.ADMIN_SEC;
+    const adminSec = process.env.JWT_SEC;
     if (adminSec === undefined) {
-      throw Error("Add ADMIN_SEC in env");
+      throw Error("Add JWT_SEC in env");
     }
 
     const admin = verify(token, adminSec);
-
     const typedPayload = admin as IPayload;
     if (typedPayload.admin.verified) {
       return typedPayload;
@@ -24,6 +23,7 @@ export const verifyAdmin = (req: NextApiRequest): any | null => {
       return null;
     }
   } catch (error) {
+    console.log(error);
     return null;
   }
 };

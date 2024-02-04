@@ -14,13 +14,15 @@ export default function App({ Component, pageProps }: any): JSX.Element {
   axios.interceptors.request.use(
     (config) => {
       const token = localStorage.getItem("token");
-      if (token) {
-        config.headers["Authorization"] = "Bearer " + token;
+      if (token !== null) {
+        config.headers.Authorization = "Bearer " + token;
+      } else {
+        console.log("not authenticated");
       }
       return config;
     },
     (error) => {
-      Promise.reject(error);
+      void Promise.reject(error);
     }
   );
 

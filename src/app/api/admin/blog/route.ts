@@ -1,9 +1,10 @@
 import dbConnect from "@/middleware/mongo";
 import { verifyAdmin } from "@/middleware/verifyToken";
 import { Blog } from "@/models/Blog";
-import type { NextApiRequest } from "next";
+import type { NextRequest } from "next/server";
 
-export async function PUT(req: NextApiRequest): Promise<Response> {
+// update blog
+export async function POST(req: NextRequest): Promise<Response> {
   const admin = verifyAdmin(req);
   if (admin === null)
     return Response.json({ message: "Unauthorized!" }, { status: 401 });
@@ -18,7 +19,7 @@ export async function PUT(req: NextApiRequest): Promise<Response> {
       image = "",
       desc = "",
       content,
-    } = req.body;
+    } = await req.json();
 
     await Blog.create({
       title,

@@ -16,6 +16,7 @@ interface IPayload extends JWTPayload {
 export async function middleware(req: NextRequest): Promise<NextResponse> {
   // console.log(req);
   const token = req.cookies.get("authorization");
+
   if (token === undefined) {
     return NextResponse.redirect(new URL("/auth/login", req.url));
   }

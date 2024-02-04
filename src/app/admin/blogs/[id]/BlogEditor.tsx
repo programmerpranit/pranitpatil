@@ -52,7 +52,11 @@ const BlogEditor = ({ blogObj }: { blogObj: BlogType | null }): JSX.Element => {
         published: blog?.published,
       };
 
-      const res = await axios.put(url, data);
+      const res = await axios.put(url, data, {
+        headers: {
+          Authorization: "Bearer psp",
+        },
+      });
       setBlog(res.data.blog as BlogType);
       toast.success(res.data.message as string);
     } catch (error) {

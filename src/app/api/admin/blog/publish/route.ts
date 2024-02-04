@@ -1,17 +1,17 @@
 import dbConnect from "@/middleware/mongo";
 import { verifyAdmin } from "@/middleware/verifyToken";
 import { Blog, type IBlog } from "@/models/Blog";
-import type { NextApiRequest } from "next";
 import { revalidatePath } from "next/cache";
+import type { NextRequest } from "next/server";
 
-export async function PUT(req: NextApiRequest): Promise<Response> {
+export async function PUT(req: NextRequest): Promise<Response> {
   const admin = verifyAdmin(req);
   if (admin === null)
     return Response.json({ message: "Unauthorized!" }, { status: 401 });
 
   try {
     await dbConnect();
-    const { published, id } = req.body;
+    const { published, id } = await req.json();
 
     const blog: IBlog | null = await Blog.findByIdAndUpdate(
       id,
