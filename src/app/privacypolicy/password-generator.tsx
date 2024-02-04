@@ -1,9 +1,10 @@
 import Link from "next/link";
+import React from "react";
 
-const PasswordGenerator = () => {
+const PasswordGenerator = (): JSX.Element => {
   return (
     <>
-      <div className="max-w-6xl mx-auto p-5">
+      <div className="mx-auto max-w-6xl p-5">
         <h2>Privacy Policy - Password Generator</h2>
         <br />
         <p>

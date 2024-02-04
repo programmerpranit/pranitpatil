@@ -2,7 +2,6 @@ import moment from "moment/moment";
 import Image from "next/image";
 import React from "react";
 import { Blog, type IBlog } from "@/models/Blog";
-import { BASE_URL } from "@/utils/config";
 import dbConnect from "@/middleware/mongo";
 import { type Metadata } from "next";
 import hljs from "highlight.js/lib/core";
