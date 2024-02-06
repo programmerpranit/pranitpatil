@@ -21,7 +21,7 @@ export async function POST(req: NextRequest): Promise<Response> {
       content,
     } = await req.json();
 
-    await Blog.create({
+    const blog = await Blog.create({
       title,
       image,
       content,
@@ -32,7 +32,7 @@ export async function POST(req: NextRequest): Promise<Response> {
     });
 
     return Response.json(
-      { message: "Blog Created Successfully" },
+      { message: "Blog Created Successfully", blog },
       { status: 200 }
     );
   } catch (error) {

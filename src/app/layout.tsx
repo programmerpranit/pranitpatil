@@ -4,6 +4,8 @@ import "@/app/globals.css";
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "./(home)/Footer";
+import "react-toastify/dist/ReactToastify.css";
+import ToastContainerWrapper from "@/components/ToastContainerWrapper";
 
 export const metadata: Metadata = {
   title: "Pranit Patil - Full Stack Developer",
@@ -31,6 +33,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <ToastContainerWrapper />
         <Navbar />
         {children}
         <Footer />

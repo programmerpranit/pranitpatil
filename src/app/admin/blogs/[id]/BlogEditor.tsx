@@ -81,9 +81,10 @@ const BlogEditor = ({ blogObj }: { blogObj: BlogType | null }): JSX.Element => {
       const res = await axios.post(url, data);
       setBlog(res.data.blog as BlogType);
       toast.success(res.data.message as string);
+      console.log(res.data);
       router.push(`/admin/blogs/${res.data.blog._id}`);
     } catch (error) {
-      handleApiError();
+      handleApiError(error);
     }
     setSaving(false);
   };
