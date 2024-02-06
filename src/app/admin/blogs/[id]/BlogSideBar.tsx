@@ -1,4 +1,5 @@
 import type { IBlog } from "@/models/Blog";
+import type { MongoBase } from "@/types/mongo";
 import Image from "next/image";
 import React, {
   useEffect,
