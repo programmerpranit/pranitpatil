@@ -22,6 +22,8 @@ export async function PUT(req: NextRequest): Promise<Response> {
     );
 
     revalidatePath(`/blogs/${blog?.slug}`);
+    revalidatePath("/blogs");
+    revalidatePath("/admin/blogs");
     return Response.json(
       {
         message: `Blog ${
