@@ -3,6 +3,7 @@ import { Blog, type IBlog } from "@/models/Blog";
 import Link from "next/link";
 import React from "react";
 import BlogCard from "./BlogCard";
+import type { MongoBase } from "@/types/mongo";
 
 interface BlogType extends IBlog, MongoBase {}
 

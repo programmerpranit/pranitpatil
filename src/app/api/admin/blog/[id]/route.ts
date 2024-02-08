@@ -35,9 +35,9 @@ export async function PUT(
       },
       { new: true }
     );
-    if (blog?.published === true) {
-      revalidatePath(`/blogs/${blog.slug}`);
-    }
+
+    revalidatePath(`/blogs/${blog?.slug}`);
+
     return Response.json(
       { message: "Blog Updated Successfully", blog },
       { status: 200 }

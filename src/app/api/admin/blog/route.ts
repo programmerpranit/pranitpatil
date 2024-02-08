@@ -3,6 +3,8 @@ import { verifyAdmin } from "@/middleware/verifyToken";
 import { Blog } from "@/models/Blog";
 import type { NextRequest } from "next/server";
 
+export const revalidate = -1;
+
 // update blog
 export async function POST(req: NextRequest): Promise<Response> {
   const admin = verifyAdmin(req);
