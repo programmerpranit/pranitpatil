@@ -5,6 +5,8 @@ import React from "react";
 import BlogCard from "./BlogCard";
 import type { MongoBase } from "@/types/mongo";
 
+export const revalidate = 0;
+
 interface BlogType extends IBlog, MongoBase {}
 
 const fetchBlogs = async (): Promise<BlogType[]> => {
