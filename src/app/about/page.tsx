@@ -7,7 +7,7 @@ const About = (): JSX.Element => {
         <h2 className=" my-5">About Me</h2>
 
         <a href="/resume-pranit-patil.pdf" download>
-          <button className="bg-primary">Resume</button>
+          <button className="bg-primary">My Resume</button>
         </a>
         <br />
         <br />
