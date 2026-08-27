@@ -1,8 +1,7 @@
 import moment from "moment/moment";
 import Image from "next/image";
 import React from "react";
-import { Blog, type IBlog } from "@/models/Blog";
-import dbConnect from "@/middleware/mongo";
+import { blogs, getBlogBySlug } from "@/content/blogs";
 import { type Metadata } from "next";
 import hljs from "highlight.js/lib/core";
 import javascript from "highlight.js/lib/languages/javascript";
@@ -10,16 +9,15 @@ import Highlight from "./Highlight";
 import "highlight.js/styles/vs2015.css";
 hljs.registerLanguage("javascript", javascript);
 
-interface BlogProps extends IBlog, MongoBase {}
-
 interface Props {
   params: { slug: string };
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const slug = params.slug;
-  await dbConnect();
-  const blog = await Blog.findOne({ slug });
+export function generateMetadata({ params }: Props): Metadata {
+  const blog = getBlogBySlug(params.slug);
+  if (blog === undefined) {
+    return { title: "Blog Not Found" };
+  }
 
   return {
     title: blog.title,
@@ -27,24 +25,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export async function generateStaticParams(): Promise<any> {
-  await dbConnect();
-  const blogs = await Blog.find({ published: true }, { slug: 1, _id: 0 });
-  return blogs;
+export function generateStaticParams(): Array<{ slug: string }> {
+  return blogs.map((blog) => ({ slug: blog.slug }));
 }
 
-async function getBlog(slug: string): Promise<BlogProps> {
-  await dbConnect();
-  const blog = await Blog.findOne({ slug });
-  return JSON.parse(JSON.stringify(blog));
-}
-
-const BlogPage = async ({
+const BlogPage = ({
   params: { slug },
 }: {
   params: { slug: string };
-}): Promise<JSX.Element> => {
-  const blog = await getBlog(slug);
+}): JSX.Element => {
+  const blog = getBlogBySlug(slug);
+
+  if (blog === undefined) {
+    throw new Error("Blog Not Found");
+  }
 
   const getDate = (str: string): string => {
     return moment(str).format("DD MMM YYYY");
@@ -68,12 +62,12 @@ const BlogPage = async ({
   },
   "headline": "${blog.title}",
   "description": "${blog.desc}",
-  "image": "${blog.image}",  
+  "image": "${blog.image}",
   "author": {
     "@type": "Person",
     "name": "Pranit Patil",
     "url": "https://pranitpatil.com"
-  },  
+  },
   "publisher": {
     "@type": "Organization",
     "name": "Pranit Patil",
@@ -113,7 +107,7 @@ const BlogPage = async ({
               </p>
             </div>
 
-            {blog?.image.length !== 0 && (
+            {blog.image.length !== 0 && (
               <Image
                 src={blog.image}
                 width={800}
@@ -137,42 +131,3 @@ const BlogPage = async ({
 };
 
 export default BlogPage;
-
-// export const getStaticPaths = async () => {
-//   await dbConnect();
-//   const posts = await Blog.find({ published: true }).select({ content: 0 });
-
-//   const paths = posts.map((post) => ({
-//     params: { slug: post.slug },
-//   }));
-//   // console.log(paths);
-//   return {
-//     paths,
-//     fallback: "blocking", // false or "blocking"
-//   };
-// };
-
-// export async function getStaticProps(context) {
-//   // console.log(context.params);
-//   const slug = context.params.slug;
-//   try {
-//     await dbConnect();
-//     const blogData = await Blog.findOne({
-//       slug: slug,
-//     });
-//     if (!blogData.published) {
-//       return {
-//         props: { blog: null },
-//       };
-//     }
-//     const blog = JSON.parse(JSON.stringify(blogData));
-//     return {
-//       props: { blog },
-//     };
-//   } catch (error) {
-//     console.log(error);
-//     return {
-//       props: { blog: null },
-//     };
-//   }
-// }

@@ -1,11 +1,9 @@
-import { type IBlog } from "@/models/Blog";
+import { type Blog } from "@/content/blogs";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-interface BlogProps extends IBlog, MongoBase {}
-
-const BlogCard = ({ blog }: { blog: BlogProps }): JSX.Element => {
+const BlogCard = ({ blog }: { blog: Blog }): JSX.Element => {
   return (
     <>
       <div className="my-5 rounded border border-gray-300 shadow-md md:m-5">
