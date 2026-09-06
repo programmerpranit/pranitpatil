@@ -30,7 +30,7 @@ const Navbar = () => {
                 pathname == "/" ? "text-primary" : "text-secondary"
               } hover:text-primary`}
             >
-              Work
+              Home
             </p>
           </Link>
           <Link href="/talk">

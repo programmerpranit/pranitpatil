@@ -14,15 +14,12 @@
 
 html {
   max-width: 100vw;
-  /* overflow-x: hidden; */
-  /* font-family: 'Roboto', sans-serif; */
-  font-family: "Poppins", sans-serif;
   line-height: 1.8;
   color: #212121;
 }
 
 :root {
-  --primary: #0070f3;
+  --primary: #4338ca;
 }
 
 a {
@@ -53,7 +50,6 @@ h4 {
 p {
   font-size: 16px;
   line-height: 1.75;
-  letter-spacing: 1px;
   font-weight: 400;
 }
 
@@ -68,13 +64,13 @@ button {
 
 blockquote {
   padding-left: 1rem;
-  border-left: 1px solid #0070f3;
+  border-left: 1px solid #4338ca;
   font-style: italic;
 }
 
 .ProseMirror blockquote {
   padding-left: 1rem;
-  border-left: 2px solid #0070f3;
+  border-left: 2px solid #4338ca;
   font-style: italic;
 }
 .max-lines-2 {

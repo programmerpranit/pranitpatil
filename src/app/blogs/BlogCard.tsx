@@ -19,7 +19,7 @@ const BlogCard = ({ blog }: { blog: Blog }): JSX.Element => {
             {blog?.category}
           </p>
           <Link href={`/blogs/${blog?.slug}`}>
-            <h3 className="max-lines-3 my-2 leading-normal text-black hover:text-primary">
+            <h3 className="my-2 leading-normal text-black hover:text-primary">
               {blog?.title}
             </h3>
           </Link>

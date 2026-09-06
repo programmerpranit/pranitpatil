@@ -7,7 +7,9 @@ const WorkSection = (): JSX.Element => {
     <>
       {/* Blu Resort Lucky Numbers Doublestar Aidni Website Api Day Mumbai */}
 
-      <div className="work mt-40 flex flex-col flex-wrap justify-around md:flex-row">
+      <h2 className="mt-16 md:mt-24">Selected Work</h2>
+
+      <div className="work mt-8 grid grid-cols-1 gap-8 md:grid-cols-3">
         <WorkCard
           image={"/work/blu/bluwaterresort.png"}
           title={"Blu Water Resort"}
@@ -23,7 +25,7 @@ const WorkSection = (): JSX.Element => {
           url={"/work/luckynumbers"}
         />
         <WorkCard
-          image={"/work/doublestar/doublestar-light.png"}
+          image={"/work/doublestar/doublestar.png"}
           title={"Double Star Game"}
           description={
             "Revamping Casino Betting for Mass Participation with User-Friendly Performance"
@@ -31,45 +33,26 @@ const WorkSection = (): JSX.Element => {
           url={"/work/doublestar"}
         />
       </div>
-      <div className=" mt-20 flex flex-wrap justify-center">
+      <div className="mt-20 flex flex-col divide-y divide-gray-200 border-t border-gray-200">
         <SmallWork
-          image={"/work/UI/malshej-web.jpg"}
           title={"Malshej Agro Resort"}
           url={"https://www.malshejagro.com/"}
         />
         <SmallWork
-          image={"/work/aidni/aidni.jpg"}
-          title={"Aidni International"}
-          url={"https://aidniinternational.com/"}
-        />
-        <SmallWork
-          image={"/work/UI/air-o-sea.jpg"}
           title={"Air-O-Sea International"}
           url={"https://airoseainternational.com"}
         />
-
         <SmallWork
-          image={"/work/UI/darban.png"}
           title={"Darban Resort"}
           url={"https://www.darbanresort.com/"}
         />
-
         <SmallWork
-          image={"/work/UI/skg.jpg"}
           title={"SKG Steeltech"}
           url={"https://skgsteeltech.com/"}
         />
-
         <SmallWork
-          image={"/work/UI/squirrel.png"}
           title={"Squirrel Resort"}
           url={"https://www.squirrelresort.com/"}
-        />
-
-        <SmallWork
-          image={"/work/UI/torna-mutton.png"}
-          title={"Torna Mutton Khanawal"}
-          url={"https://hoteltornamuttonkhanawal.com/"}
         />
       </div>
     </>

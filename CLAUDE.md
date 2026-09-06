@@ -29,6 +29,7 @@ Package manager is yarn (yarn.lock present, no package-lock.json).
 ```
 src/app/                    # App Router (current, primary)
   (home)/                   # homepage — hardcoded JSX
+  about/                    # about page — hardcoded JSX
   work/                     # case study pages — hardcoded JSX
   talk/                     # talks page — hardcoded JSX (single talk), public/talks/ for images
   blogs/                    # blog list + [slug] detail — reads from src/content/blogs/

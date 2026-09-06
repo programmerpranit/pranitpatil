@@ -17,7 +17,7 @@ const WorkCard = ({
 }: WorkCardProps): JSX.Element => {
   return (
     <>
-      <div className="m-5 rounded-lg p-5 hover:bg-blue-50 md:w-2/5">
+      <div className="rounded-lg p-5 hover:bg-indigo-50">
         <Image
           src={image}
           width={700}

@@ -11,12 +11,13 @@ const DoubleStar = (): JSX.Element => {
       <section className="mx-auto my-10 flex max-w-7xl flex-col gap-5 md:flex-row ">
         <div className="flex flex-col items-center justify-center p-5 md:w-1/2 md:px-10">
           <h2 className="text-center">
-            Reviving a Classic TV Show into an Engaging Mobile Gaming Experience
+            Revamping Casino Betting for Mass Participation
           </h2>
           <br />
           <p className="text-center">
-            The Lucky Numbers Game aimed to revive the classic 80s TV show,
-            transforming it into an engaging mobile gaming experience
+            The Double Star App redefined casino betting, accommodating
+            10,000+ users in simultaneous gameplay with a fast,
+            user-friendly interface.
           </p>
         </div>
         <div className="p-5 md:w-1/2">
@@ -60,7 +61,7 @@ const DoubleStar = (): JSX.Element => {
         </p>
         <div className="flex flex-col py-10 md:flex-row">
           <div className="p-5 md:w-1/3">
-            <MdOutlineAttachMoney className="mx-auto text-blue-600" size={50} />
+            <MdOutlineAttachMoney className="mx-auto text-primary" size={50} />
             <br />
             <h3 className="pb-2 text-center">
               Profitable Algorithm & User Engagement
@@ -71,7 +72,7 @@ const DoubleStar = (): JSX.Element => {
             </p>
           </div>
           <div className="p-5 md:w-1/3">
-            <BiUserCheck className="mx-auto text-blue-600" size={50} />
+            <BiUserCheck className="mx-auto text-primary" size={50} />
             <br />
             <h3 className="pb-2 text-center">Seamless User Experience</h3>
 
@@ -81,7 +82,7 @@ const DoubleStar = (): JSX.Element => {
             </p>
           </div>
           <div className="p-5 md:w-1/3">
-            <IoMdStopwatch className="mx-auto text-blue-600 " size={50} />
+            <IoMdStopwatch className="mx-auto text-primary " size={50} />
             <br />
             <h3 className="pb-2 text-center">
               Optimized Performance for All Devices:

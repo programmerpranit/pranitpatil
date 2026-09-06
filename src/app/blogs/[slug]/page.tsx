@@ -1,4 +1,3 @@
-import moment from "moment/moment";
 import Image from "next/image";
 import React from "react";
 import { blogs, getBlogBySlug } from "@/content/blogs";
@@ -41,7 +40,11 @@ const BlogPage = ({
   }
 
   const getDate = (str: string): string => {
-    return moment(str).format("DD MMM YYYY");
+    return new Intl.DateTimeFormat("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    }).format(new Date(str));
   };
 
   const getTime = (str: string = ""): number => {

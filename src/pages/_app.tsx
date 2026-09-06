@@ -1,7 +1,5 @@
 import "@/app/globals.css";
 import "highlight.js/styles/vs2015.css";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import Head from "next/head";
 import axios from "axios";
 import Navbar from "@/components/Navbar";
@@ -45,7 +43,6 @@ export default function App({ Component, pageProps }: any): JSX.Element {
       </Head>
       <NextNProgress color="#0070f3" />
       <Navbar />
-      <ToastContainer pauseOnFocusLoss draggable pauseOnHover />
 
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-326KGTZH86"
